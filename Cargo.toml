@@ -1,0 +1,12 @@
+[package]
+name = "AdventOfCode"
+version = "0.1.0"
+authors = ["Benoît Zugmeyer <bzugmeyer@gmail.com>"]
+
+[dependencies]
+rust-crypto = "^0.2"
+pcre = "0.2.1"
+permutohedron = "0.2.0"
+serde_json = "0.6.0"
+regex = "0.1"
+lazy_static = "0.1.15"
