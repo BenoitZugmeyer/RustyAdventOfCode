@@ -1,0 +1,2 @@
+Register 'b' after executing instructions: Some(170)
+Register 'b' after executing instructions with 'a' initialized to 1: Some(247)
