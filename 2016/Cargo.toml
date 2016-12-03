@@ -1,0 +1,8 @@
+[package]
+authors = ["Benoît Zugmeyer <bzugmeyer@gmail.com>"]
+name = "advent_of_code_2016"
+version = "0.1.0"
+
+[dependencies]
+itertools = "0.5.6"
+regex = "0.1.80"
