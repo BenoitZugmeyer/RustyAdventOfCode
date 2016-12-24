@@ -7,6 +7,7 @@ version = "0.1.0"
 itertools = "0.5.6"
 regex = "0.1.80"
 rust-crypto = "0.2.36"
+permutohedron = "0.2.2"
 
 [dependencies.nom]
 version = "2.0.1"
