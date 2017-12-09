@@ -5,4 +5,5 @@ version = "0.1.0"
 
 [dependencies]
 itertools = "0.7.3"
+nom = "3.2.1"
 regex = "0.2.3"
