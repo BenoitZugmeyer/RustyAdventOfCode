@@ -3,10 +3,7 @@ use std::io;
 fn main() {
     let mut input = String::new();
     io::stdin().read_line(&mut input).unwrap();
-    let numbers: Vec<_> = input
-        .chars()
-        .flat_map(|ch| ch.to_digit(10))
-        .collect();
+    let numbers: Vec<_> = input.chars().flat_map(|ch| ch.to_digit(10)).collect();
 
     let mut part_1 = 0;
     let mut part_2 = 0;
