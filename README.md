@@ -4,7 +4,7 @@ My solutions for [Advent Of Code](http://adventofcode.com) written in Rust. I am
 exercise to learn this language, so the code may contain many mistakes. Let me know if you have any
 advice or question!
 
-### Other Rust implementations:
+### Other Rust implementations
 
 | Repository | Twitter profile | Completion |
 |--|--|--|
@@ -25,3 +25,5 @@ advice or question!
 | [zargony/advent-of-code-2016](https://github.com/zargony/advent-of-code-2016) | [@zargony](https://twitter.com/zargony) | 2016 |
 
 ¹ unfinished
+
+Add your own by submitting a pull request.
