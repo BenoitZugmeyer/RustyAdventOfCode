@@ -20,6 +20,7 @@ advice or question!
 | [mgritter/aoc2017](https://github.com/mgritter/aoc2017) | [@markgritter](https://twitter.com/markgritter) | 2017¹ |
 | [rje/aoc2017](https://github.com/rje/aoc2017) | [@rje](https://twitter.com/rje) | 2017¹ |
 | [StreakyCobra/advent-of-code-2017](https://github.com/StreakyCobra/advent-of-code-2017) | [@StreakyCobra](https://twitter.com/StreakyCobra) | 2017¹ |
+| [thejpster/rust-advent-of-code](https://github.com/thejpster/rust-advent-of-code) | [@therealjpster](https://twitter.com/therealjpster) | 2016¹, 2017¹ |
 | [ubsan/advent-of-code](https://github.com/ubsan/advent-of-code) | [@ubsanitizer](https://twitter.com/ubsanitizer) | 2016¹ |
 | [udoprog/rust-advent-of-code-2017](https://github.com/udoprog/rust-advent-of-code-2017) | [@udoprog](https://twitter.com/udoprog) | 2017¹ |
 | [wezm/advent-of-code](https://github.com/wezm/advent-of-code) | [@wezm](https://twitter.com/wezm) | 2017¹ |
