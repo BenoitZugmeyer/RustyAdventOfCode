@@ -15,6 +15,7 @@ advice or question!
 | [joelverhagen/adventofcode](https://github.com/joelverhagen/adventofcode) | [@joelverhagen](https://twitter.com/joelverhagen) | 2015¹, 2016¹ |
 | [jugglerchris/aoc2017](https://github.com/jugglerchris/aoc2017) | [@jugglerchris](https://twitter.com/jugglerchris) | 2017¹ |
 | [JWorthe/adventofcode2016](https://github.com/JWorthe/adventofcode2016) | [@JWorthe](https://twitter.com/JWorthe) | 2016 |
+| [McGittyHub/aoc-2k17](https://github.com/McGittyHub/aoc-2k17) | [@snarf95](https://twitter.com/snarf95) | 2017¹ |
 | [mgritter/aoc2017](https://github.com/mgritter/aoc2017) | [@markgritter](https://twitter.com/markgritter) | 2017¹ |
 | [rje/aoc2017](https://github.com/rje/aoc2017) | [@rje](https://twitter.com/rje) | 2017¹ |
 | [StreakyCobra/advent-of-code-2017](https://github.com/StreakyCobra/advent-of-code-2017) | [@StreakyCobra](https://twitter.com/StreakyCobra) | 2017¹ |
