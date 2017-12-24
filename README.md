@@ -19,6 +19,7 @@ advice or question!
 | [McGittyHub/aoc-2k17](https://github.com/McGittyHub/aoc-2k17) | [@snarf95](https://twitter.com/snarf95) | 2017¹ |
 | [mgritter/aoc2017](https://github.com/mgritter/aoc2017) | [@markgritter](https://twitter.com/markgritter) | 2017¹ |
 | [rje/aoc2017](https://github.com/rje/aoc2017) | [@rje](https://twitter.com/rje) | 2017¹ |
+| [sciyoshi/advent-of-rust-2017](https://github.com/sciyoshi/advent-of-rust-2017) | [@sciyoshi](https://twitter.com/sciyoshi) | 2017¹ |
 | [StreakyCobra/advent-of-code-2017](https://github.com/StreakyCobra/advent-of-code-2017) | [@StreakyCobra](https://twitter.com/StreakyCobra) | 2017¹ |
 | [thejpster/rust-advent-of-code](https://github.com/thejpster/rust-advent-of-code) | [@therealjpster](https://twitter.com/therealjpster) | 2016¹, 2017¹ |
 | [ubsan/advent-of-code](https://github.com/ubsan/advent-of-code) | [@ubsanitizer](https://twitter.com/ubsanitizer) | 2016¹ |
