@@ -151,10 +151,10 @@ fn next_grid(grid: &Grid, transformations: &HashMap<Cell, Cell>) -> Grid {
                 (0..count).map(move |mut ocol| {
                     ocol *= 2;
                     find_transformation(
-                        0b1_00_00 | grid_get(grid, orow, ocol) << 3 |
-                            grid_get(grid, orow, ocol + 1) << 2 |
-                            grid_get(grid, orow + 1, ocol) << 1 |
-                            grid_get(grid, orow + 1, ocol + 1),
+                        0b1_00_00 | grid_get(grid, orow, ocol) << 3
+                            | grid_get(grid, orow, ocol + 1) << 2
+                            | grid_get(grid, orow + 1, ocol) << 1
+                            | grid_get(grid, orow + 1, ocol + 1),
                         transformations,
                     )
                 })
@@ -168,15 +168,15 @@ fn next_grid(grid: &Grid, transformations: &HashMap<Cell, Cell>) -> Grid {
                 (0..count).map(move |mut ocol| {
                     ocol *= 3;
                     find_transformation(
-                        0b1_000_000_000 | grid_get(grid, orow, ocol) << 8 |
-                            grid_get(grid, orow, ocol + 1) << 7 |
-                            grid_get(grid, orow, ocol + 2) << 6 |
-                            grid_get(grid, orow + 1, ocol) << 5 |
-                            grid_get(grid, orow + 1, ocol + 1) << 4 |
-                            grid_get(grid, orow + 1, ocol + 2) << 3 |
-                            grid_get(grid, orow + 2, ocol) << 2 |
-                            grid_get(grid, orow + 2, ocol + 1) << 1 |
-                            grid_get(grid, orow + 2, ocol + 2),
+                        0b1_000_000_000 | grid_get(grid, orow, ocol) << 8
+                            | grid_get(grid, orow, ocol + 1) << 7
+                            | grid_get(grid, orow, ocol + 2) << 6
+                            | grid_get(grid, orow + 1, ocol) << 5
+                            | grid_get(grid, orow + 1, ocol + 1) << 4
+                            | grid_get(grid, orow + 1, ocol + 2) << 3
+                            | grid_get(grid, orow + 2, ocol) << 2
+                            | grid_get(grid, orow + 2, ocol + 1) << 1
+                            | grid_get(grid, orow + 2, ocol + 2),
                         transformations,
                     )
                 })
@@ -207,7 +207,7 @@ fn main() {
                 .#.
                 ..#
                 ###
-            "
+            ",
         ),
     ];
 

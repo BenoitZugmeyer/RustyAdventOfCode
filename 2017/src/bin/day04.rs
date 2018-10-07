@@ -1,4 +1,3 @@
-#![feature(conservative_impl_trait)]
 extern crate itertools;
 
 use std::io::stdin;
