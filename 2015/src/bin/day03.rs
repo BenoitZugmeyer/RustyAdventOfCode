@@ -1,4 +1,3 @@
-#![feature(io)]
 use std::io;
 use std::io::Read;
 use std::collections::btree_set::BTreeSet;
@@ -13,12 +12,12 @@ impl Coordinates {
         Coordinates { x: 0, y: 0 }
     }
 
-    fn apply(&mut self, direction: char) {
+    fn apply(&mut self, direction: u8) {
         match direction {
-            '<' => self.x -= 1,
-            '>' => self.x += 1,
-            'v' => self.y -= 1,
-            '^' => self.y += 1,
+            b'<' => self.x -= 1,
+            b'>' => self.x += 1,
+            b'v' => self.y -= 1,
+            b'^' => self.y += 1,
             _ => {},
         };
     }
@@ -38,7 +37,7 @@ fn main() {
     let mut houses_first_year: BTreeSet<(i32, i32)> = BTreeSet::new();
     let mut houses_next_year: BTreeSet<(i32, i32)> = BTreeSet::new();
 
-    let directions = io::stdin().chars().filter_map(|ch| ch.ok());
+    let directions = io::stdin().bytes().filter_map(|ch| ch.ok());
 
     for (index, ch) in directions.enumerate() {
         santa_first_year.apply(ch);

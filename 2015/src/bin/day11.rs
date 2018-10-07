@@ -1,5 +1,4 @@
 use std::io;
-use std::io::BufRead;
 
 fn is_password_valid(password: &[u8]) -> bool {
     let mut previous = None;

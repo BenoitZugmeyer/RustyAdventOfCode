@@ -1,14 +1,13 @@
-#![feature(io)]
 use std::io::stdin;
 use std::io::Read;
 
 fn main() {
 
-    let (negative_floor, final_floor) = stdin().chars()
+    let (negative_floor, final_floor) = stdin().bytes()
         .scan(0, |acc, result| {
             match result {
-                Ok('(') => *acc += 1,
-                Ok(')') => *acc -= 1,
+                Ok(b'(') => *acc += 1,
+                Ok(b')') => *acc -= 1,
                 _ => {},
             };
             Some(*acc)

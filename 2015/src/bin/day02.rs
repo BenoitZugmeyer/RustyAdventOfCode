@@ -1,5 +1,3 @@
-#![feature(slice_patterns)]
-#![feature(iter_arith)]
 use std::io;
 use std::io::BufRead;
 

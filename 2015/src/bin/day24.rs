@@ -1,5 +1,3 @@
-#![feature(iter_arith)]
-
 use std::io;
 use std::io::BufRead;
 use std::cmp::min;

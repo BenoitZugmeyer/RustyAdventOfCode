@@ -2,7 +2,7 @@ extern crate regex;
 
 use std::io;
 use std::io::BufRead;
-use std::cmp::{max, min};
+use std::cmp::min;
 use regex::Regex;
 
 fn compute_distance(race_time: u32, kms: u32, run_time: u32, rest_time: u32) -> u32 {
@@ -12,25 +12,29 @@ fn compute_distance(race_time: u32, kms: u32, run_time: u32, rest_time: u32) -> 
 }
 
 fn main() {
-
     let stdin = io::stdin();
-    let re = Regex::new(r"(\w+) can fly (\d+) km/s for (\d+) seconds, but then must rest for (\d+) seconds\.").unwrap();
+    let re = Regex::new(
+        r"(\w+) can fly (\d+) km/s for (\d+) seconds, but then must rest for (\d+) seconds\.",
+    ).unwrap();
     let race_time = 2503;
 
-    let parameters: Vec<_> = stdin.lock().lines()
+    let parameters: Vec<_> = stdin
+        .lock()
+        .lines()
         .filter_map(|l| l.ok())
         .filter_map(|ref line| {
             re.captures(line).map(|ref m| {
                 (
                     m.at(2).unwrap().parse::<u32>().unwrap(),
                     m.at(3).unwrap().parse::<u32>().unwrap(),
-                    m.at(4).unwrap().parse::<u32>().unwrap()
+                    m.at(4).unwrap().parse::<u32>().unwrap(),
                 )
             })
         })
         .collect();
 
-    let max = parameters.iter()
+    let max = parameters
+        .iter()
         .map(|&(kms, run_time, rest_time)| compute_distance(race_time, kms, run_time, rest_time))
         .max()
         .unwrap();
@@ -40,7 +44,8 @@ fn main() {
     let mut scores = vec![0; parameters.len()];
 
     for r in 1..race_time + 1 {
-        let distances: Vec<_> = parameters.iter()
+        let distances: Vec<_> = parameters
+            .iter()
             .map(|&(kms, run_time, rest_time)| compute_distance(r, kms, run_time, rest_time))
             .collect();
 

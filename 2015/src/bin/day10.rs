@@ -1,6 +1,5 @@
 
 use std::io;
-use std::io::BufRead;
 
 #[allow(dead_code)]
 fn transform_no_iter(input: &[u8]) -> Vec<u8> {

@@ -1,4 +1,3 @@
-#![feature(iter_arith)]
 extern crate serde_json;
 
 use serde_json::Value;

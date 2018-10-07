@@ -1,5 +1,3 @@
-#![feature(iter_arith)]
-
 extern crate regex;
 
 use std::io;

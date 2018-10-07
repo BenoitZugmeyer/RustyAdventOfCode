@@ -1,6 +1,5 @@
 use std::fmt;
 use std::io;
-use std::io::Read;
 use std::io::BufRead;
 
 

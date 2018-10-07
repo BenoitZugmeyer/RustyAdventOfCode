@@ -1,4 +1,3 @@
-#![feature(iter_arith)]
 extern crate regex;
 extern crate permutohedron;
 
