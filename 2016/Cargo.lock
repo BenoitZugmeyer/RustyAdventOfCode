@@ -1,4 +1,4 @@
-[root]
+[[package]]
 name = "advent_of_code_2016"
 version = "0.1.0"
 dependencies = [

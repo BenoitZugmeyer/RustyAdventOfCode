@@ -133,7 +133,7 @@ named!(
     )
 );
 
-fn exec(instructions: &mut [Instruction], mut memory: &mut Memory) {
+fn exec(instructions: &mut [Instruction], memory: &mut Memory) {
     let mut ptr = 0;
 
     while ptr < instructions.len() {

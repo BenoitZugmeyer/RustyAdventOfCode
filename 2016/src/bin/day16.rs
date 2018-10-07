@@ -3,7 +3,7 @@ use itertools::Itertools;
 use std::io::stdin;
 use std::io::Read;
 
-fn fill_until(mut vec: &mut Vec<bool>, len: usize) {
+fn fill_until(vec: &mut Vec<bool>, len: usize) {
     vec.reserve(len);
     while vec.len() < len {
         vec.push(false);

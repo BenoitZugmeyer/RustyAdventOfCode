@@ -121,7 +121,7 @@ named!(
     )
 );
 
-fn exec(instructions: &mut [Instruction], mut memory: &mut Memory) -> bool {
+fn exec(instructions: &mut [Instruction], memory: &mut Memory) -> bool {
     let mut ptr = 0;
     let mut count = 0;
     let mut previous = None;

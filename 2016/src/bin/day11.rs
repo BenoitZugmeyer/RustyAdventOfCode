@@ -140,7 +140,7 @@ impl State {
         }
     }
 
-    fn gen_states_couples(&self, a: &Object, next_floor: usize, mut res: &mut Vec<State>) -> bool {
+    fn gen_states_couples(&self, a: &Object, next_floor: usize, res: &mut Vec<State>) -> bool {
         let mut result = false;
         for b in &self.objects[self.floor] {
             if a > b {

@@ -248,7 +248,7 @@ fn main() {
     let instructions: Vec<_> = stdin()
         .bytes()
         .filter_map(|b| b.ok())
-        .batching(|mut it| {
+        .batching(|it| {
             let bytes: Vec<_> = it.take_while(|ch| ch != &b'\n').collect();
             if bytes.is_empty() {
                 None

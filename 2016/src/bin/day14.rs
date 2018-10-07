@@ -33,7 +33,6 @@ fn find_keys_index<B>(hashes: B) -> u32
     let mut count = 0;
     let mut iter = itertools::multipeek(hashes);
 
-    #[allow(while_let_on_iterator)]
     while let Some(h) = iter.next() {
         if let Some(ch) = has_n_of_a_kind(&h, 3) {
             let five_of_a_kind: String = iter::repeat(ch).take(5).collect();

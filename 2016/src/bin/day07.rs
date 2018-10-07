@@ -54,9 +54,9 @@ fn main() {
         .bytes()
         .filter_map(|b| b.ok())
         .map(|b| b as char)
-        .batching(|mut it| {
+        .batching(|it| {
             let s: Vec<_> = it.take_while(|ch| ch != &'\n')
-                .batching(|mut it| {
+                .batching(|it| {
                     let s: String = it.take_while(|ch| ch != &'[' && ch != &']').collect();
                     if s.is_empty() { None } else { Some(s) }
                 })
