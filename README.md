@@ -15,6 +15,7 @@ Add your own by submitting a pull request.
 | [birkenfeld/advent15](https://github.com/birkenfeld/advent15) | - | 2015 |
 | [birkenfeld/advent16](https://github.com/birkenfeld/advent16) | - | 2016 |
 | [birkenfeld/advent17](https://github.com/birkenfeld/advent17) | - | 2017 |
+| [dgel/adventOfCode2017](https://github.com/dgel/adventOfCode2017) | - | 2017 |
 | [jugglerchris/aoc2017](https://github.com/jugglerchris/aoc2017) | [@jugglerchris](https://twitter.com/jugglerchris) | 2017 |
 | [JWorthe/advent_of_code_2017](https://github.com/JWorthe/advent_of_code_2017) | [@JWorthe](https://twitter.com/JWorthe) | 2017 |
 | [JWorthe/adventofcode2016](https://github.com/JWorthe/adventofcode2016) | [@JWorthe](https://twitter.com/JWorthe) | 2016 |
@@ -31,16 +32,20 @@ Add your own by submitting a pull request.
 | Repository | Twitter profile | Completion |
 |--|--|--|
 | [adamchalmers/adventofcode2017](https://github.com/adamchalmers/adventofcode2017) | [@adam_chal](https://twitter.com/adam_chal) | 2017 |
+| [anowell/advent-of-code](https://github.com/anowell/advent-of-code) | - | 2018 |
 | [birkenfeld/advent18](https://github.com/birkenfeld/advent18) | - | 2018 |
 | [bolshchikov/adventofcode-solutions](https://github.com/bolshchikov/adventofcode-solutions) | [@bolshchikov](https://twitter.com/bolshchikov) | 2017 |
 | [cameronp/aoc17](https://github.com/cameronp/aoc17) | [@cameronp](https://twitter.com/cameronp) | 2017 |
+| [dgel/adventOfCode2018](https://github.com/dgel/adventOfCode2018) | - | 2018 |
 | [jasonpeacock/advent-of-code-2017](https://github.com/jasonpeacock/advent-of-code-2017) | [@jasonpeacock](https://twitter.com/jasonpeacock) | 2017 |
 | [joelverhagen/adventofcode](https://github.com/joelverhagen/adventofcode) | [@joelverhagen](https://twitter.com/joelverhagen) | 2015, 2016, 2017 |
+| [JMS55/advent-of-code-2018](https://gitlab.com/JMS55/advent-of-code-2018) | - | 2018 |
 | [humean/advent-of-code](https://github.com/humean/advent-of-code) | [@m_rutter](https://twitter.com/m_rutter) | 2017, 2018 |
+| [LLBlumire/AoC2018](https://github.com/LLBlumire/AOC2018) | [@llblumire](https://twitter.com/m_rutter) | 2018 |
 | [mgritter/aoc2017](https://github.com/mgritter/aoc2017) | [@markgritter](https://twitter.com/markgritter) | 2017 |
 | [rje/aoc2017](https://github.com/rje/aoc2017) | [@rje](https://twitter.com/rje) | 2017 |
+| [shssoichiro/aoc2018](https://git.onewebdev.info/soichiro/aoc2018) | - | 2018 |
 | [StreakyCobra/advent-of-code-2017](https://github.com/StreakyCobra/advent-of-code-2017) | [@StreakyCobra](https://twitter.com/StreakyCobra) | 2017 |
 | [ubsan/advent-of-code](https://github.com/ubsan/advent-of-code) | [@ubsanitizer](https://twitter.com/ubsanitizer) | 2016 |
 | [wezm/advent-of-code](https://github.com/wezm/advent-of-code) | [@wezm](https://twitter.com/wezm) | 2017 |
-| [xfix/advent-of-code-2017](https://github.com/xfix/advent-of-code-2017) | | 2017 |
-| [LLBlumire/AoC2018](https://github.com/LLBlumire/AOC2018) | @llblumire | 2018 |
+| [xfix/advent-of-code-2017](https://github.com/xfix/advent-of-code-2017) | - | 2017
