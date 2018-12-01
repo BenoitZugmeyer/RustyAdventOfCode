@@ -12,6 +12,9 @@ Add your own by submitting a pull request.
 
 | Repository | Twitter profile | Completion |
 |--|--|--|
+| [birkenfeld/advent15](https://github.com/birkenfeld/advent15) | - | 2015 |
+| [birkenfeld/advent16](https://github.com/birkenfeld/advent16) | - | 2016 |
+| [birkenfeld/advent17](https://github.com/birkenfeld/advent17) | - | 2017 |
 | [jugglerchris/aoc2017](https://github.com/jugglerchris/aoc2017) | [@jugglerchris](https://twitter.com/jugglerchris) | 2017 |
 | [JWorthe/advent_of_code_2017](https://github.com/JWorthe/advent_of_code_2017) | [@JWorthe](https://twitter.com/JWorthe) | 2017 |
 | [JWorthe/adventofcode2016](https://github.com/JWorthe/adventofcode2016) | [@JWorthe](https://twitter.com/JWorthe) | 2016 |
@@ -28,6 +31,7 @@ Add your own by submitting a pull request.
 | Repository | Twitter profile | Completion |
 |--|--|--|
 | [adamchalmers/adventofcode2017](https://github.com/adamchalmers/adventofcode2017) | [@adam_chal](https://twitter.com/adam_chal) | 2017 |
+| [birkenfeld/advent18](https://github.com/birkenfeld/advent18) | - | 2018 |
 | [bolshchikov/adventofcode-solutions](https://github.com/bolshchikov/adventofcode-solutions) | [@bolshchikov](https://twitter.com/bolshchikov) | 2017 |
 | [cameronp/aoc17](https://github.com/cameronp/aoc17) | [@cameronp](https://twitter.com/cameronp) | 2017 |
 | [jasonpeacock/advent-of-code-2017](https://github.com/jasonpeacock/advent-of-code-2017) | [@jasonpeacock](https://twitter.com/jasonpeacock) | 2017 |
