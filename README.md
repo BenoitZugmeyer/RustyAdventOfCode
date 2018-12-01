@@ -32,6 +32,7 @@ Add your own by submitting a pull request.
 | Repository | Twitter profile | Completion |
 |--|--|--|
 | [adamchalmers/adventofcode2017](https://github.com/adamchalmers/adventofcode2017) | [@adam_chal](https://twitter.com/adam_chal) | 2017 |
+| [anowell/advent-of-code](https://github.com/anowell/advent-of-code) | - | 2018 |
 | [birkenfeld/advent18](https://github.com/birkenfeld/advent18) | - | 2018 |
 | [bolshchikov/adventofcode-solutions](https://github.com/bolshchikov/adventofcode-solutions) | [@bolshchikov](https://twitter.com/bolshchikov) | 2017 |
 | [cameronp/aoc17](https://github.com/cameronp/aoc17) | [@cameronp](https://twitter.com/cameronp) | 2017 |
