@@ -42,4 +42,5 @@ Add your own by submitting a pull request.
 | [StreakyCobra/advent-of-code-2017](https://github.com/StreakyCobra/advent-of-code-2017) | [@StreakyCobra](https://twitter.com/StreakyCobra) | 2017 |
 | [ubsan/advent-of-code](https://github.com/ubsan/advent-of-code) | [@ubsanitizer](https://twitter.com/ubsanitizer) | 2016 |
 | [wezm/advent-of-code](https://github.com/wezm/advent-of-code) | [@wezm](https://twitter.com/wezm) | 2017 |
-| [xfix/advent-of-code-2017](https://github.com/xfix/advent-of-code-2017) | | 2017
+| [xfix/advent-of-code-2017](https://github.com/xfix/advent-of-code-2017) | | 2017 |
+| [LLBlumire/AoC2018](https://github.com/LLBlumire/AOC2018) | @llblumire | 2018 |
