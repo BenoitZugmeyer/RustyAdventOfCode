@@ -39,6 +39,7 @@ Add your own by submitting a pull request.
 | [birkenfeld/advent18](https://github.com/birkenfeld/advent18) | - | 2018 |
 | [bolshchikov/adventofcode-solutions](https://github.com/bolshchikov/adventofcode-solutions) | [@bolshchikov](https://twitter.com/bolshchikov) | 2017 |
 | [BurntSushi/advent-of-code](https://github.com/BurntSushi/advent-of-code) | - | 2018 |
+| [butzsch/Advent-of-Code-2018](https://github.com/butzsch/Advent-of-Code-2018) | - | 2018 |
 | [cameronp/aoc17](https://github.com/cameronp/aoc17) | [@cameronp](https://twitter.com/cameronp) | 2017 |
 | [dgel/adventOfCode2018](https://github.com/dgel/adventOfCode2018) | - | 2018 |
 | [dsilvers/aoc](https://git.gitano.org.uk/personal/dsilvers/aoc.git/tree) | [@dsilverstone](https://twitter.com/dsilverstone) | 2018 |
