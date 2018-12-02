@@ -16,6 +16,7 @@ Add your own by submitting a pull request.
 | [birkenfeld/advent16](https://github.com/birkenfeld/advent16) | - | 2016 |
 | [birkenfeld/advent17](https://github.com/birkenfeld/advent17) | - | 2017 |
 | [dgel/adventOfCode2017](https://github.com/dgel/adventOfCode2017) | - | 2017 |
+| [dsilvers/aoc](https://git.gitano.org.uk/personal/dsilvers/aoc.git/tree) | [@dsilverstone](https://twitter.com/dsilverstone) | 2015, 2016, 2017 |
 | [jugglerchris/aoc2017](https://github.com/jugglerchris/aoc2017) | [@jugglerchris](https://twitter.com/jugglerchris) | 2017 |
 | [JWorthe/advent_of_code_2017](https://github.com/JWorthe/advent_of_code_2017) | [@JWorthe](https://twitter.com/JWorthe) | 2017 |
 | [JWorthe/adventofcode2016](https://github.com/JWorthe/adventofcode2016) | [@JWorthe](https://twitter.com/JWorthe) | 2016 |
@@ -27,7 +28,6 @@ Add your own by submitting a pull request.
 | [zargony/advent-of-code-2015](https://github.com/zargony/advent-of-code-2015) | [@zargony](https://twitter.com/zargony) | 2015 |
 | [zargony/advent-of-code-2016](https://github.com/zargony/advent-of-code-2016) | [@zargony](https://twitter.com/zargony) | 2016 |
 | [zargony/advent-of-code-2017](https://github.com/zargony/advent-of-code-2017) | [@zargony](https://twitter.com/zargony) | 2017 |
-| [dsilvers/aoc](https://git.gitano.org.uk/personal/dsilvers/aoc.git/tree) | [@dsilverstone](https://twitter.com/dsilverstone) | 2015, 2016, 2017 |
 
 #### Unfinished
 
@@ -40,6 +40,7 @@ Add your own by submitting a pull request.
 | [bolshchikov/adventofcode-solutions](https://github.com/bolshchikov/adventofcode-solutions) | [@bolshchikov](https://twitter.com/bolshchikov) | 2017 |
 | [cameronp/aoc17](https://github.com/cameronp/aoc17) | [@cameronp](https://twitter.com/cameronp) | 2017 |
 | [dgel/adventOfCode2018](https://github.com/dgel/adventOfCode2018) | - | 2018 |
+| [dsilvers/aoc](https://git.gitano.org.uk/personal/dsilvers/aoc.git/tree) | [@dsilverstone](https://twitter.com/dsilverstone) | 2018 |
 | [hedvigoscar/adventofcode2018](https://github.com/hedvigoscar/adventofcode2018) | - | 2018 |
 | [jasonpeacock/advent-of-code-2017](https://github.com/jasonpeacock/advent-of-code-2017) | [@jasonpeacock](https://twitter.com/jasonpeacock) | 2017 |
 | [joelverhagen/adventofcode](https://github.com/joelverhagen/adventofcode) | [@joelverhagen](https://twitter.com/joelverhagen) | 2015, 2016, 2017 |
@@ -55,4 +56,3 @@ Add your own by submitting a pull request.
 | [ubsan/advent-of-code](https://github.com/ubsan/advent-of-code) | [@ubsanitizer](https://twitter.com/ubsanitizer) | 2016 |
 | [wezm/advent-of-code](https://github.com/wezm/advent-of-code) | [@wezm](https://twitter.com/wezm) | 2017 |
 | [xfix/advent-of-code-2017](https://github.com/xfix/advent-of-code-2017) | - | 2017 |
-| [dsilvers/aoc](https://git.gitano.org.uk/personal/dsilvers/aoc.git/tree) | [@dsilverstone](https://twitter.com/dsilverstone) | 2018 |
