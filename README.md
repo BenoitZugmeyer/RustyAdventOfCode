@@ -30,6 +30,7 @@ Add your own by submitting a pull request.
 | [udoprog/rust-advent-of-code-2018](https://github.com/udoprog/rust-advent-of-code-2018) | - | 2018 |
 | [gperinazzo/advent-of-code-2018](https://github.com/gperinazzo/advent-of-code-2018) | - | 2018 |
 | [theonewolf/aoc2018](https://github.com/theonewolf/aoc2018) | [@theonewolf](https://twitter.com/theonewolf) | 2018 |
+| [jfro/AoC2018](https://github.com/jfro/AoC2018) | [@jeromejtk](https://twitter.com/jeromejtk) | 2018 |
 
 #### Finished
 
