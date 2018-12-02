@@ -1,5 +1,5 @@
-use std::io::{stdin, BufRead};
 use std::collections::HashSet;
+use std::io::{stdin, BufRead};
 
 fn main() {
     let changes: Vec<i32> = stdin()
@@ -15,6 +15,7 @@ fn main() {
     let frequency = changes
         .iter()
         .cycle()
+        .take(1_000_000)
         .scan(0, |frequency, &change| {
             *frequency += change;
             Some(*frequency)
