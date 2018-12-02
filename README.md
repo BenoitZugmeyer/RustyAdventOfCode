@@ -27,6 +27,7 @@ Add your own by submitting a pull request.
 | [zargony/advent-of-code-2015](https://github.com/zargony/advent-of-code-2015) | [@zargony](https://twitter.com/zargony) | 2015 |
 | [zargony/advent-of-code-2016](https://github.com/zargony/advent-of-code-2016) | [@zargony](https://twitter.com/zargony) | 2016 |
 | [zargony/advent-of-code-2017](https://github.com/zargony/advent-of-code-2017) | [@zargony](https://twitter.com/zargony) | 2017 |
+| [dsilvers/aoc](https://git.gitano.org.uk/personal/dsilvers/aoc.git/tree) | [@dsilverstone](https://twitter.com/dsilverstone) | 2015, 2016, 2017 |
 
 #### Unfinished
 
@@ -54,3 +55,4 @@ Add your own by submitting a pull request.
 | [ubsan/advent-of-code](https://github.com/ubsan/advent-of-code) | [@ubsanitizer](https://twitter.com/ubsanitizer) | 2016 |
 | [wezm/advent-of-code](https://github.com/wezm/advent-of-code) | [@wezm](https://twitter.com/wezm) | 2017 |
 | [xfix/advent-of-code-2017](https://github.com/xfix/advent-of-code-2017) | - | 2017 |
+| [dsilvers/aoc](https://git.gitano.org.uk/personal/dsilvers/aoc.git/tree) | [@dsilverstone](https://twitter.com/dsilverstone) | 2018 |
