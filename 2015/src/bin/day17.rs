@@ -5,10 +5,10 @@ fn combinations<F: FnMut(u8) -> ()>(containers: &[u8], container_count: u8, lite
     if !containers.is_empty() {
         let mut next_containers = containers.to_vec();
         for (index, container) in containers.iter().enumerate().rev() {
-            if container == &liters {
+            if *container == liters {
                 fct(container_count);
             }
-            else if container < &liters {
+            else if *container < liters {
                 next_containers.remove(index);
                 combinations(&next_containers, container_count + 1, liters - container, fct);
             }
@@ -17,9 +17,7 @@ fn combinations<F: FnMut(u8) -> ()>(containers: &[u8], container_count: u8, lite
 }
 
 fn main() {
-    let stdin = io::stdin();
-
-    let containers: Vec<_> = stdin.lock().lines()
+    let containers: Vec<_> = io::stdin().lock().lines()
         .filter_map(|l| l.ok())
         .filter_map(|ref line| line.parse::<u8>().ok())
         .collect();

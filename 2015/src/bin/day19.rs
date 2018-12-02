@@ -58,8 +58,8 @@ impl<'a, T: 'a> SubSlicesIterator<'a, T> {
     fn new(slice: &'a[T], needle: &'a[T]) -> Self {
         SubSlicesIterator {
             position: 0,
-            needle: needle,
-            slice: slice,
+            needle,
+            slice,
         }
     }
 
@@ -106,7 +106,7 @@ impl Mutator {
         }
 
         Mutator {
-            reversed_mutations: reversed_mutations,
+            reversed_mutations,
         }
     }
 
@@ -209,7 +209,7 @@ impl Elements {
     fn new() -> Self {
         let mut hash = BTreeMap::new();
         hash.insert("e".to_string(), 0);
-        Elements { hash: hash }
+        Elements { hash }
     }
 
     fn parse_one(&mut self, s: &str) -> u8 {

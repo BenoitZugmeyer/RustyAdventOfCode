@@ -68,7 +68,7 @@ impl<'a> State<'a> {
             wizard_armor: world.wizard.armor,
             boss_hp: world.boss.hp,
             active_spells: vec![0; world.spells.len()],
-            world: world,
+            world,
         }
     }
 
@@ -79,18 +79,18 @@ impl<'a> State<'a> {
             if *turns_remaining == 0 { continue }
             *turns_remaining -= 1;
 
-            self.boss_hp -= spell.damages as i32;
-            self.wizard_armor += spell.armor as i32;
-            self.wizard_hp += spell.heal as i32;
-            self.wizard_mp += spell.mana as i32;
+            self.boss_hp -= i32::from(spell.damages);
+            self.wizard_armor += i32::from(spell.armor);
+            self.wizard_hp += i32::from(spell.heal);
+            self.wizard_mp += i32::from(spell.mana);
         }
     }
 
     fn cast_spell(&mut self, spell_index: usize) -> Option<u8> {
         if self.active_spells[spell_index] > 0 { return None }
         let spell = &self.world.spells[spell_index];
-        if self.wizard_mp < spell.cost as i32 { return None }
-        self.wizard_mp -= spell.cost as i32;
+        if self.wizard_mp < i32::from(spell.cost) { return None }
+        self.wizard_mp -= i32::from(spell.cost);
         self.active_spells[spell_index] = spell.turns;
         Some(spell.cost)
     }
@@ -123,7 +123,7 @@ fn fight_round(cast_spell_index: usize, mut state: State) -> Option<u32> {
     }
 
     let cost = if let Some(cost) = state.cast_spell(cast_spell_index) {
-        cost as u32
+        u32::from(cost)
     }
     else {
         // Not enough mana
@@ -180,11 +180,9 @@ fn example2() {
 }
 
 fn main() {
-    let stdin = io::stdin();
-
     let mut boss = Character::default();
 
-    for line in stdin.lock().lines().filter_map(|l| l.ok()) {
+    for line in io::stdin().lock().lines().filter_map(|l| l.ok()) {
         if let Some((key, value)) = line.partition(": ") {
             if let Ok(value) = value.parse::<i32>() {
                 match key {

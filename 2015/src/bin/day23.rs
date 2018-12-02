@@ -29,18 +29,18 @@ impl Instruction {
 
         macro_rules! parse_register {
             ($str: expr) => (
-                try!(try!($str.ok_or("No register specified")).chars().next().ok_or("Invalid register name"))
+                $str.ok_or("No register specified")?.chars().next().ok_or("Invalid register name")?
             )
         }
 
         macro_rules! parse_offset {
             ($str: expr) => (
-                try!(try!($str.ok_or("No offset specified")).parse::<Offset>())
+                $str.ok_or("No offset specified")?.parse::<Offset>()?
             )
         }
 
         if let Some(caps) = RE.captures(&s) {
-            match try!(caps.at(1).ok_or("No first group")) {
+            match caps.at(1).ok_or("No first group")? {
                 "hlf" => Ok(Instruction::Hlf(parse_register!(caps.at(2)))),
                 "tpl" => Ok(Instruction::Tpl(parse_register!(caps.at(2)))),
                 "inc" => Ok(Instruction::Inc(parse_register!(caps.at(2)))),
@@ -117,9 +117,7 @@ fn example() {
 }
 
 fn main() {
-    let stdin = io::stdin();
-
-    let instructions = stdin.lock().lines()
+    let instructions = io::stdin().lock().lines()
         .filter_map(|l| l.ok())
         .filter_map(|line| {
             match Instruction::parse(&line) {

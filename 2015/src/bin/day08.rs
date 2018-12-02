@@ -6,12 +6,11 @@ use regex::Regex;
 
 fn main() {
 
-    let stdin = io::stdin();
     let re = Regex::new(r#""|\\\\|\\x|\\"#).unwrap();
 
     let sum2 = &|(a1, a2), (b1, b2)| (a1 + b1, a2 + b2);
 
-    let (count, encoded_count): (u32, u32) = stdin.lock().lines()
+    let (count, encoded_count): (u32, u32) = io::stdin().lock().lines()
         .filter_map(|l| l.ok())
         .map(|ref line| {
             re.captures_iter(line)

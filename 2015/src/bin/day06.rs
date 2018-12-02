@@ -24,8 +24,8 @@ struct Action {
 impl Action {
 
     fn apply_on_grid<T, F: Fn(&mut T)>(&self, lights: &mut [T], f: F) {
-        for x in self.ax .. self.bx + 1 {
-            for y in self.ay .. self.by + 1 {
+        for x in self.ax ..= self.bx {
+            for y in self.ay ..= self.by {
                 let light = &mut lights[x * 1000 + y];
                 f(light);
             }
@@ -76,8 +76,8 @@ fn main() {
 
     let stdin = io::stdin();
 
-    let mut binary_lights = [false; 1000_000];
-    let mut multilevel_lights = [0u8; 1000_000];
+    let mut binary_lights = [false; 1_000_000];
+    let mut multilevel_lights = [0u8; 1_000_000];
 
     let actions = stdin.lock().lines()
         .filter_map(|l| l.ok())
@@ -89,6 +89,6 @@ fn main() {
     }
 
     println!("Binary lights lit: {}", binary_lights.iter().filter(|&&on| on).count());
-    println!("Multi level lights brightness: {}", multilevel_lights.iter().fold(0u32, |t, &l| t + l as u32));
+    println!("Multi level lights brightness: {}", multilevel_lights.iter().fold(0u32, |t, &l| t + u32::from(l)));
 }
 

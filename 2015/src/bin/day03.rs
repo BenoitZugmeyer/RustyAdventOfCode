@@ -43,7 +43,7 @@ fn main() {
         santa_first_year.apply(ch);
         houses_first_year.insert((santa_first_year.x, santa_first_year.y));
 
-        let mut coords_next_year = if index % 2 == 0 { &mut santa } else { &mut robot };
+        let coords_next_year = if index % 2 == 0 { &mut santa } else { &mut robot };
         coords_next_year.apply(ch);
         houses_next_year.insert((coords_next_year.x, coords_next_year.y));
     }

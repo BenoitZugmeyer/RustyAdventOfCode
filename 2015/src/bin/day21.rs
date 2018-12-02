@@ -51,8 +51,8 @@ struct Permutations {
 
 impl Permutations {
     fn new(maxes: Vec<usize>) -> Self {
-        let max = maxes.iter().fold(1, |t, m| t * m);
-        Permutations { maxes: maxes, index: 0, max: max }
+        let max = maxes.iter().product();
+        Permutations { maxes, index: 0, max }
     }
 }
 
@@ -105,11 +105,9 @@ fn would_win_against2() {
 
 
 fn main() {
-    let stdin = io::stdin();
-
     let mut ennemy = Character::default();
 
-    for line in stdin.lock().lines().filter_map(|l| l.ok()) {
+    for line in io::stdin().lock().lines().filter_map(|l| l.ok()) {
         if let Some((key, value)) = line.partition(": ") {
             if let Ok(value) = value.parse::<i32>() {
                 match key {

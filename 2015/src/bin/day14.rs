@@ -12,13 +12,12 @@ fn compute_distance(race_time: u32, kms: u32, run_time: u32, rest_time: u32) -> 
 }
 
 fn main() {
-    let stdin = io::stdin();
     let re = Regex::new(
         r"(\w+) can fly (\d+) km/s for (\d+) seconds, but then must rest for (\d+) seconds\.",
     ).unwrap();
     let race_time = 2503;
 
-    let parameters: Vec<_> = stdin
+    let parameters: Vec<_> = io::stdin()
         .lock()
         .lines()
         .filter_map(|l| l.ok())
@@ -43,7 +42,7 @@ fn main() {
 
     let mut scores = vec![0; parameters.len()];
 
-    for r in 1..race_time + 1 {
+    for r in 1..=race_time {
         let distances: Vec<_> = parameters
             .iter()
             .map(|&(kms, run_time, rest_time)| compute_distance(r, kms, run_time, rest_time))

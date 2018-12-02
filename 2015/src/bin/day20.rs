@@ -9,8 +9,8 @@ struct Divisors {
 
 impl Divisors {
     fn new(n: u32) -> Self {
-        let max = (n as f64).sqrt() as u32;
-        Divisors { n: n, max: max, index: 0 }
+        let max = f64::from(n).sqrt() as u32;
+        Divisors { n, max, index: 0 }
     }
 }
 
@@ -37,7 +37,7 @@ struct HouseIterator {
 
 impl HouseIterator {
     fn new(present_factor: u32, max_houses: u32) -> Self {
-        HouseIterator { index: 0, present_factor: present_factor, max_houses: max_houses }
+        HouseIterator { index: 0, present_factor, max_houses }
     }
 
     fn min_house(&mut self, min_presents: u32) -> Option<u32> {
@@ -65,8 +65,7 @@ impl Iterator for HouseIterator {
 }
 
 fn main() {
-    let stdin = io::stdin();
-    let min_presents = stdin.lock().lines().next().unwrap().unwrap().parse::<u32>().unwrap();
+    let min_presents = io::stdin().lock().lines().next().unwrap().unwrap().parse::<u32>().unwrap();
 
     let mut infinite_delivery = HouseIterator::new(10, u32::max_value());
     if let Some(house) = infinite_delivery.min_house(min_presents) {

@@ -15,10 +15,7 @@ fn main() {
     let is_nice = &mut |s: &str| vowels.exec(s).is_some() && double.exec(s).is_some() && bad.exec(s).is_none();
     let better_is_nice = &mut |s: &str| pairs.exec(s).is_some() && repeats.exec(s).is_some();
 
-
-    let stdin = io::stdin();
-
-    let (count, better_count) = stdin.lock().lines()
+    let (count, better_count) = io::stdin().lock().lines()
         .filter_map(|l| l.ok())
         .fold((0, 0), |(n, bn), ref line| (
             n + if is_nice(line) { 1 } else { 0 },

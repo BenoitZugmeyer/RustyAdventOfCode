@@ -21,13 +21,13 @@ impl Recipe {
         Recipe { capacity: 0, durability: 0, flavor: 0, texture: 0, calories: 0 }
     }
 
-    fn add_ingredient(&mut self, ingredient: &Ingredient, spoons: u8) {
+    fn add_ingredient(&mut self, ingredient: &Ingredient, spoons: i32) {
         let &Ingredient(capacity, durability, flavor, texture, calories) = ingredient;
-        self.capacity += capacity * spoons as i32;
-        self.durability += durability * spoons as i32;
-        self.flavor += flavor * spoons as i32;
-        self.texture += texture * spoons as i32;
-        self.calories += calories * spoons as i32;
+        self.capacity += capacity * spoons;
+        self.durability += durability * spoons;
+        self.flavor += flavor * spoons;
+        self.texture += texture * spoons;
+        self.calories += calories * spoons;
     }
 
     fn score(&self) -> u32 {
@@ -61,7 +61,7 @@ impl Generator {
     fn new(count: usize, max: u8) -> Self {
         let mut spoons = vec![0; count];
         spoons[0] = max;
-        Generator { spoons: spoons, max: max, first: true }
+        Generator { spoons, max, first: true }
     }
 
     fn gen_next(&mut self) -> bool {
@@ -97,10 +97,9 @@ impl Generator {
 }
 
 fn main() {
-    let stdin = io::stdin();
     let re = Regex::new(r"^\w+: capacity (-?\d+), durability (-?\d+), flavor (-?\d+), texture (-?\d+), calories (-?\d+)").unwrap();
 
-    let parameters: Vec<_> = stdin.lock().lines()
+    let parameters: Vec<_> = io::stdin().lock().lines()
         .filter_map(|l| l.ok())
         .filter_map(|ref line| {
             re.captures(line).map(|ref m| {
@@ -122,7 +121,7 @@ fn main() {
     while let Some(spoons) = generator.generate() {
         let mut recipe = Recipe::new();
         for (ingredient, spoon_count) in parameters.iter().zip(spoons.iter()) {
-            recipe.add_ingredient(ingredient, *spoon_count);
+            recipe.add_ingredient(ingredient, i32::from(*spoon_count));
         }
 
         let score = recipe.score();

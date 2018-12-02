@@ -60,7 +60,7 @@ impl Operation {
 
 fn parse_wire(wire: &str) -> u32 {
     wire.bytes().rev().enumerate().fold(0u32, |total, (index, ch)| {
-        total + (ch as u32 - 96) * 26u32.pow(index as u32)
+        total + (u32::from(ch) - 96) * 26u32.pow(index as u32)
     })
 }
 
@@ -121,9 +121,7 @@ fn run_circuit(circuit: &Circuit, signals: &mut Signals) -> Option<u16> {
 
 fn main() {
 
-    let stdin = io::stdin();
-
-    let circuit = stdin.lock().lines()
+    let circuit = io::stdin().lock().lines()
         .filter_map(|l| l.ok())
         .filter_map(|ref line| parse(&line))
         .collect::<Circuit>();

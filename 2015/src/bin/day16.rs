@@ -95,11 +95,11 @@ fn main() {
     let mut real_aunt_sue: Option<String> = None;
 
     for aunt_sue in aunt_sues {
-        if !unadjusted_aunt_sue.is_some() && aunt_sue.matches(&expectations) {
+        if unadjusted_aunt_sue.is_none() && aunt_sue.matches(&expectations) {
             unadjusted_aunt_sue = Some(aunt_sue.name.clone());
         }
 
-        if !real_aunt_sue.is_some() && aunt_sue.adjusted_matches(&expectations) {
+        if real_aunt_sue.is_none() && aunt_sue.adjusted_matches(&expectations) {
             real_aunt_sue = Some(aunt_sue.name.clone());
         }
 

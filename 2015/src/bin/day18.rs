@@ -10,7 +10,7 @@ struct LightIterator<'a> {
 
 impl<'a> LightIterator<'a> {
     fn new(grid: &'a Grid) -> Self {
-        LightIterator { index: 0, grid: grid }
+        LightIterator { index: 0, grid }
     }
 }
 
@@ -132,9 +132,9 @@ impl Default for Grid {
 impl fmt::Display for Grid {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         for (x, _, light) in self.iter() {
-            try!(write!(f, "{}", if *light { '#' } else { '.' }));
+            write!(f, "{}", if *light { '#' } else { '.' })?;
             if x as usize == self.size - 1 {
-                try!(write!(f, "\n"));
+                writeln!(f)?;
             }
         }
         Ok(())
@@ -144,9 +144,7 @@ impl fmt::Display for Grid {
 fn main() {
     let mut original_grid = Grid::new();
 
-    let stdin = io::stdin();
-
-    for (y, line) in stdin.lock().lines().filter_map(|l| l.ok()).enumerate() {
+    for (y, line) in io::stdin().lock().lines().filter_map(|l| l.ok()).enumerate() {
         if original_grid.size == 0 {
             original_grid.set_size(line.len());
         }

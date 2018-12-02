@@ -29,9 +29,7 @@ fn sum_non_red_numbers(value: &Value) -> i64 {
 
 fn main() {
 
-    let stdin = io::stdin();
-
-    let (sum, non_red_sum) = stdin.lock().lines()
+    let (sum, non_red_sum) = io::stdin().lock().lines()
         .filter_map(|r| r.ok())
         .filter_map(|ref line| serde_json::from_str(line).ok())
         .map(|ref json| (sum_numbers(json), sum_non_red_numbers(json)))

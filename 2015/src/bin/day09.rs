@@ -21,10 +21,9 @@ fn main() {
     let mut all_cities = BTreeSet::new();
     let mut distances = BTreeMap::new();
 
-    let stdin = io::stdin();
     let re = Regex::new(r"(\w+) to (\w+) = (\d+)").unwrap();
 
-    for line in stdin.lock().lines().filter_map(|l| l.ok()) {
+    for line in io::stdin().lock().lines().filter_map(|l| l.ok()) {
         if let Some(ref m) = re.captures(&line) {
             all_cities.insert(String::from(m.at(1).unwrap()));
             all_cities.insert(String::from(m.at(2).unwrap()));

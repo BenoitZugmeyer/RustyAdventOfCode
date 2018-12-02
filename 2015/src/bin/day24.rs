@@ -41,7 +41,7 @@ fn find_ideal_configuration(package_weights: &mut Vec<u64>, groups_count: u64) -
     // package_weights.sort();
     // package_weights.reverse();
 
-    pwet(group_weight, package_weights, &mut group, 0).ok_or("No result".to_string())
+    pwet(group_weight, package_weights, &mut group, 0).ok_or_else(|| "No result".to_string())
 }
 
 
@@ -58,9 +58,7 @@ fn example2() {
 }
 
 fn main() {
-    let stdin = io::stdin();
-
-    let mut package_weights = stdin.lock().lines()
+    let mut package_weights = io::stdin().lock().lines()
         .filter_map(|l| l.ok())
         .filter_map(|line| line.parse::<u64>().ok())
         .collect::<Vec<u64>>();

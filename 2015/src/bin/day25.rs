@@ -10,9 +10,9 @@ fn code_number(row: u32, column: u32) -> u32 {
 }
 
 fn code(number: u32) -> u32 {
-    let mut result = 20151125u64;
+    let mut result = 20_151_125u64;
     for _ in 1..number {
-        result = (result * 252533) % 33554393
+        result = (result * 252_533) % 33_554_393
     }
     result as u32
 }
@@ -33,10 +33,8 @@ fn code_test() {
 
 
 fn main() {
-    let stdin = io::stdin();
-
     let regex = Regex::new(r"row (\d+), column (\d+)").unwrap();
-    let line = stdin.lock().lines().next().unwrap().unwrap();
+    let line = io::stdin().lock().lines().next().unwrap().unwrap();
     let cap = regex.captures(&line).unwrap();
     let row: u32 = cap.at(1).unwrap().parse().unwrap();
     let column: u32 = cap.at(2).unwrap().parse().unwrap();

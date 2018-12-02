@@ -46,10 +46,9 @@ fn main() {
     let mut attendees: Vec<String> = Vec::new();
     let mut happiness: BTreeMap<(usize, usize), i32> = BTreeMap::new();
 
-    let stdin = io::stdin();
     let re = Regex::new(r"(\w+) would (gain|lose) (\d+) happiness units by sitting next to (\w+)").unwrap();
 
-    for line in stdin.lock().lines().filter_map(|l| l.ok()) {
+    for line in io::stdin().lock().lines().filter_map(|l| l.ok()) {
         if let Some(ref m) = re.captures(&line) {
             let index_a = push(&mut attendees, String::from(m.at(1).unwrap()));
             let index_b = push(&mut attendees, String::from(m.at(4).unwrap()));
@@ -65,7 +64,7 @@ fn main() {
     }
 
     let max = compute_max_happiness(attendees.len(), |index_a, index_b| {
-        *happiness.get(&compute_key(index_a, index_b)).unwrap()
+        happiness[&compute_key(index_a, index_b)]
     });
 
     let max_with_me = compute_max_happiness(attendees.len() + 1, |index_a, index_b| {
