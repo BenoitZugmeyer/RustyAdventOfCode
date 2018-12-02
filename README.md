@@ -33,10 +33,12 @@ Add your own by submitting a pull request.
 |--|--|--|
 | [adamchalmers/adventofcode2017](https://github.com/adamchalmers/adventofcode2017) | [@adam_chal](https://twitter.com/adam_chal) | 2017 |
 | [anowell/advent-of-code](https://github.com/anowell/advent-of-code) | - | 2018 |
+| [baszalmstra/adventofcode2018](https://github.com/baszalmstra/adventofcode2018) | - | 2018 |
 | [birkenfeld/advent18](https://github.com/birkenfeld/advent18) | - | 2018 |
 | [bolshchikov/adventofcode-solutions](https://github.com/bolshchikov/adventofcode-solutions) | [@bolshchikov](https://twitter.com/bolshchikov) | 2017 |
 | [cameronp/aoc17](https://github.com/cameronp/aoc17) | [@cameronp](https://twitter.com/cameronp) | 2017 |
 | [dgel/adventOfCode2018](https://github.com/dgel/adventOfCode2018) | - | 2018 |
+| [hedvigoscar/adventofcode2018](https://github.com/hedvigoscar/adventofcode2018) | - | 2018 |
 | [jasonpeacock/advent-of-code-2017](https://github.com/jasonpeacock/advent-of-code-2017) | [@jasonpeacock](https://twitter.com/jasonpeacock) | 2017 |
 | [joelverhagen/adventofcode](https://github.com/joelverhagen/adventofcode) | [@joelverhagen](https://twitter.com/joelverhagen) | 2015, 2016, 2017 |
 | [JMS55/advent-of-code-2018](https://gitlab.com/JMS55/advent-of-code-2018) | - | 2018 |
@@ -50,4 +52,3 @@ Add your own by submitting a pull request.
 | [ubsan/advent-of-code](https://github.com/ubsan/advent-of-code) | [@ubsanitizer](https://twitter.com/ubsanitizer) | 2016 |
 | [wezm/advent-of-code](https://github.com/wezm/advent-of-code) | [@wezm](https://twitter.com/wezm) | 2017 |
 | [xfix/advent-of-code-2017](https://github.com/xfix/advent-of-code-2017) | - | 2017 |
-| [baszalmstra/adventofcode2018](https://github.com/baszalmstra/adventofcode2018) | - | 2018 |
