@@ -29,6 +29,7 @@ Add your own by submitting a pull request.
 | [shssoichiro/aoc2018](https://git.onewebdev.info/soichiro/aoc2018) | - | 2018 |
 | [udoprog/rust-advent-of-code-2018](https://github.com/udoprog/rust-advent-of-code-2018) | - | 2018 |
 | [gperinazzo/advent-of-code-2018](https://github.com/gperinazzo/advent-of-code-2018) | - | 2018 |
+| [theonewolf/aoc2018](https://github.com/theonewolf/aoc2018) | [@theonewolf](https://twitter.com/theonewolf) | 2018 |
 
 #### Finished
 
