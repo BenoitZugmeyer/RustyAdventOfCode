@@ -28,6 +28,7 @@ Add your own by submitting a pull request.
 | [LLBlumire/AoC2018](https://github.com/LLBlumire/AOC2018) | [@llblumire](https://twitter.com/llblumire) | 2018 |
 | [shssoichiro/aoc2018](https://git.onewebdev.info/soichiro/aoc2018) | - | 2018 |
 | [udoprog/rust-advent-of-code-2018](https://github.com/udoprog/rust-advent-of-code-2018) | - | 2018 |
+| [gperinazzo/advent-of-code-2018](https://github.com/gperinazzo/advent-of-code-2018) | - | 2018 |
 
 #### Finished
 
