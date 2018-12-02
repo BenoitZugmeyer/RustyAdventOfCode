@@ -60,7 +60,7 @@ impl fmt::Display for Screen {
                     write!(f, ".")?;
                 }
             }
-            write!(f, "\n")?;
+            writeln!(f)?;
         }
         Ok(())
     }

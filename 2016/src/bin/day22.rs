@@ -17,7 +17,7 @@ struct Coords {
 
 impl Coords {
     fn new(x: i16, y: i16) -> Self {
-        Coords { x: x, y: y }
+        Coords { x, y }
     }
 }
 
@@ -35,7 +35,7 @@ struct Params {
 }
 
 impl Params {
-    fn next(&self, coords: &Coords) -> Vec<Coords> {
+    fn next(&self, coords: Coords) -> Vec<Coords> {
         [(coords.x + 1, coords.y),
          (coords.x - 1, coords.y),
          (coords.x, coords.y + 1),
@@ -54,16 +54,16 @@ fn are_compatible(a: &Node, b: &Node) -> bool {
     a.used > 0 && a.used <= b.available
 }
 
-fn find_path_to(params: &Params, position: &Coords, goal: &Coords) -> Option<u32> {
+fn find_path_to(params: &Params, position: Coords, goal: Coords) -> Option<u32> {
     let mut map = BTreeMap::new();
-    map.insert(*position, 0);
+    map.insert(position, 0);
 
     for i in 0.. {
         let aa: Vec<_> = map.iter().filter(|&(_, v)| v == &i).map(|(v, _)| *v).collect();
         let mut should_go_next = false;
         for p in &aa {
-            for next in &params.next(p) {
-                if next == goal {
+            for next in &params.next(*p) {
+                if *next == goal {
                     return Some(i + 1);
                 }
                 if !map.contains_key(next) {
@@ -119,13 +119,13 @@ fn main() {
     let empty_size = empty.available;
 
     let params = Params {
-        max: max,
+        max,
         full: nodes.iter().filter(|n| n.used > empty_size).map(|n| n.coords).collect(),
     };
 
     println!("Part 2: {:?}",
              find_path_to(&params,
-                          &empty.coords,
-                          &Coords::new(goal.coords.x - 1, goal.coords.y)).unwrap() +
+                          empty.coords,
+                          Coords::new(goal.coords.x - 1, goal.coords.y)).unwrap() +
              (goal.coords.x as u32 - 1) * 5 + 1);
 }

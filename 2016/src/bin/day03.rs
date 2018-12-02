@@ -23,7 +23,7 @@ fn main() {
                     None
                 }
             } else {
-                *state = *state * 10 + (ch - b'0') as u32;
+                *state = *state * 10 + u32::from(ch - b'0');
                 None
             })
         })

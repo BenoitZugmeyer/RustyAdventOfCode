@@ -7,7 +7,7 @@ fn read_int<B>(chars: &mut B) -> u64
     let mut result = 0u64;
     for ch in chars {
         if let Some(n) = ch.to_digit(10) {
-            result = result * 10 + n as u64;
+            result = result * 10 + u64::from(n);
         } else {
             break;
         }

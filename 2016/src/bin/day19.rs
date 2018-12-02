@@ -33,7 +33,7 @@ fn winner2(elves: u32) -> u32 {
 
 #[allow(dead_code)]
 fn winner2_brute(elves: u32) -> u32 {
-    let mut elves_vec: VecDeque<_> = (1..elves + 1).collect();
+    let mut elves_vec: VecDeque<_> = (1..=elves).collect();
     let mut index = 0;
 
     while elves_vec.len() > 1 {

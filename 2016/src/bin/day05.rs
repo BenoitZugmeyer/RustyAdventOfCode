@@ -28,8 +28,8 @@ fn main() {
         md5.result(&mut result);
 
         if result[0] == 0 && result[1] == 0 && result[2] & 0xf0 == 0 {
-            Some((char::from_digit(result[2] as u32 & 0x0f, 16).unwrap(),
-                  char::from_digit((result[3] >> 4) as u32 & 0x0f, 16).unwrap()))
+            Some((char::from_digit(u32::from(result[2]) & 0x0f, 16).unwrap(),
+                  char::from_digit(u32::from(result[3] >> 4) & 0x0f, 16).unwrap()))
         } else {
             None
         }

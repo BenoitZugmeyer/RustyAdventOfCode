@@ -172,7 +172,7 @@ named!(
         minus: opt!(tag!("-")) >>
         n: take_while1!(nom::is_digit) >>
         (if minus == Some(b"-") { -1 } else { 1 } *
-         n.iter().fold(0, |acc, item| acc * 10 + (item - b'0') as i32))
+         n.iter().fold(0, |acc, item| acc * 10 + i32::from(item - b'0')))
     )
 );
 

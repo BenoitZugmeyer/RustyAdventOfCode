@@ -54,7 +54,7 @@ fn main() {
                             ord => ord,
                         }
                     })[..5]
-                .into_iter()
+                .iter()
                 .map(|&(ch, _)| **ch)
                 .collect();
 

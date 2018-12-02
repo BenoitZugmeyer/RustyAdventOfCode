@@ -26,6 +26,7 @@ fn has_n_of_a_kind(s: &str, n: usize) -> Option<char> {
     None
 }
 
+#[allow(clippy::while_let_on_iterator)]
 fn find_keys_index<B>(hashes: B) -> u32
     where B: Iterator<Item = String>
 {

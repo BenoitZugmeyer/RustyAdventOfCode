@@ -11,7 +11,7 @@ struct Disc {
 
 impl Disc {
     fn has_slot_up(&self, time: u32) -> bool {
-        (time + self.position as u32) % self.positions as u32 == 0
+        (time + u32::from(self.position)) % u32::from(self.positions) == 0
     }
 }
 

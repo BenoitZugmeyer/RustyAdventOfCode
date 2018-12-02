@@ -29,7 +29,7 @@ impl<T> Iterator for MinMaxIntoIter<T> {
 }
 
 fn minmax_into_iter<T>(minmax: MinMaxResult<T>) -> MinMaxIntoIter<T> {
-    MinMaxIntoIter { minmax: minmax }
+    MinMaxIntoIter { minmax }
 }
 
 fn open_doors(passcode: &[u8], (x, y): Coords, path: &[u8]) -> Vec<(u8, Coords)> {

@@ -110,7 +110,7 @@ impl State {
             for o in &self.objects[i] {
                 print!("{} ", o);
             }
-            println!("");
+            println!();
         }
     }
 

@@ -12,10 +12,10 @@ struct Coordinates {
 
 impl Coordinates {
     fn new(x: i16, y: i16) -> Self {
-        Coordinates { x: x, y: y }
+        Coordinates { x, y }
     }
 
-    fn distance(&self) -> i16 {
+    fn distance(self) -> i16 {
         self.x.abs() + self.y.abs()
     }
 

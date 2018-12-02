@@ -12,7 +12,7 @@ struct Coords {
 
 impl Coords {
     fn new(x: u32, y: u32) -> Self {
-        Coords { x: x, y: y }
+        Coords { x, y }
     }
 
     fn is_wall(&self, favorite_number: u32) -> bool {
@@ -37,7 +37,7 @@ fn print(max: &Coords, favorite_number: u32, path: &BTreeSet<Coords>) {
     for x in 0..(max.x + 5) {
         print!("{:2}", x);
     }
-    println!("");
+    println!();
 
     for y in 0..(max.y + 5) {
         print!("{:2} ", y);
@@ -51,7 +51,7 @@ fn print(max: &Coords, favorite_number: u32, path: &BTreeSet<Coords>) {
                 print!(" .");
             }
         }
-        println!("");
+        println!();
     }
 }
 
@@ -63,7 +63,7 @@ fn find_path(position: &Coords,
              -> Option<u32> {
 
     if let Some(s) = previous_positions.get(position) {
-        if s <= &steps {
+        if *s <= steps {
             return None;
         }
     }
@@ -93,7 +93,7 @@ fn find_reachable_path(position: &Coords,
                        mut previous_positions: &mut BTreeMap<Coords, u32>,
                        steps: u32) {
     if let Some(s) = previous_positions.get(position) {
-        if s >= &steps {
+        if *s >= steps {
             return;
         }
     }
@@ -112,7 +112,7 @@ fn main() {
         .filter_map(|b| {
             b.ok().and_then(|b| {
                 match b {
-                    b'0'...b'9' => Some((b - b'0') as u32),
+                    b'0'...b'9' => Some(u32::from(b - b'0')),
                     _ => None,
                 }
             })

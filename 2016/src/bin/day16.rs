@@ -36,7 +36,7 @@ fn print(vec: &[bool]) {
             print!("0");
         }
     }
-    println!("");
+    println!();
 }
 
 fn main() {
@@ -57,7 +57,7 @@ fn main() {
     print(&checksum(&disk1));
 
     let mut disk2 = start.clone();
-    fill_until(&mut disk2, 35651584);
+    fill_until(&mut disk2, 35_651_584);
     print!("Part 2: ");
     print(&checksum(&disk2));
 }

@@ -15,11 +15,11 @@ struct Coords {
 }
 impl Coords {
     fn new(x: usize, y: usize) -> Self {
-        Coords { x: x, y: y }
+        Coords { x, y }
     }
 }
 
-fn next(map: &Vec<Vec<Cell>>, coords: &Coords) -> Vec<Coords> {
+fn next(map: &[Vec<Cell>], coords: &Coords) -> Vec<Coords> {
     [(coords.x + 1, coords.y),
      (coords.x - 1, coords.y),
      (coords.x, coords.y + 1),
@@ -31,7 +31,7 @@ fn next(map: &Vec<Vec<Cell>>, coords: &Coords) -> Vec<Coords> {
         .collect()
 }
 
-fn find_path_to(map: &Vec<Vec<Cell>>, position: &Coords, goal: &Coords) -> Option<u32> {
+fn find_path_to(map: &[Vec<Cell>], position: &Coords, goal: &Coords) -> Option<u32> {
     let mut dmap = BTreeMap::new();
     dmap.insert(*position, 0);
 
@@ -86,9 +86,9 @@ fn main() {
         loop {
             let mut s: u32 = poi_keys.iter()
                 .tuple_windows()
-                .map(|(a, b)| find_path_to(&map, poi.get(a).unwrap(), poi.get(b).unwrap()).unwrap())
+                .map(|(a, b)| find_path_to(&map, &poi[a], &poi[b]).unwrap())
                 .sum();
-            s += find_path_to(&map, poi.get(&0).unwrap(), poi.get(poi_keys[0]).unwrap()).unwrap();
+            s += find_path_to(&map, &poi[&0], &poi[poi_keys[0]]).unwrap();
             min = std::cmp::min(min, s);
             if !poi_keys.next_permutation() {
                 break;
@@ -102,13 +102,10 @@ fn main() {
         loop {
             let mut s: u32 = poi_keys.iter()
                 .tuple_windows()
-                .map(|(a, b)| find_path_to(&map, poi.get(a).unwrap(), poi.get(b).unwrap()).unwrap())
+                .map(|(a, b)| find_path_to(&map, &poi[a], &poi[b]).unwrap())
                 .sum();
-            s += find_path_to(&map, poi.get(&0).unwrap(), poi.get(poi_keys[0]).unwrap()).unwrap();
-            s += find_path_to(&map,
-                              poi.get(&0).unwrap(),
-                              poi.get(poi_keys.last().unwrap()).unwrap())
-                .unwrap();
+            s += find_path_to(&map, &poi[&0], &poi[poi_keys[0]]).unwrap();
+            s += find_path_to(&map, &poi[&0], &poi[poi_keys.last().unwrap()]).unwrap();
             min = std::cmp::min(min, s);
             if !poi_keys.next_permutation() {
                 break;
