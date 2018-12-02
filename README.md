@@ -40,6 +40,7 @@ Add your own by submitting a pull request.
 | [jasonpeacock/advent-of-code-2017](https://github.com/jasonpeacock/advent-of-code-2017) | [@jasonpeacock](https://twitter.com/jasonpeacock) | 2017 |
 | [joelverhagen/adventofcode](https://github.com/joelverhagen/adventofcode) | [@joelverhagen](https://twitter.com/joelverhagen) | 2015, 2016, 2017 |
 | [JMS55/advent-of-code-2018](https://gitlab.com/JMS55/advent-of-code-2018) | - | 2018 |
+| [KonradBorowski/advent-of-code-2018](https://gitlab.com/KonradBorowski/advent-of-code-2018) | - | 2018 |
 | [humean/advent-of-code](https://github.com/humean/advent-of-code) | [@m_rutter](https://twitter.com/m_rutter) | 2017, 2018 |
 | [LLBlumire/AoC2018](https://github.com/LLBlumire/AOC2018) | [@llblumire](https://twitter.com/llblumire) | 2018 |
 | [mgritter/aoc2017](https://github.com/mgritter/aoc2017) | [@markgritter](https://twitter.com/markgritter) | 2017 |
