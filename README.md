@@ -41,7 +41,7 @@ Add your own by submitting a pull request.
 | [joelverhagen/adventofcode](https://github.com/joelverhagen/adventofcode) | [@joelverhagen](https://twitter.com/joelverhagen) | 2015, 2016, 2017 |
 | [JMS55/advent-of-code-2018](https://gitlab.com/JMS55/advent-of-code-2018) | - | 2018 |
 | [humean/advent-of-code](https://github.com/humean/advent-of-code) | [@m_rutter](https://twitter.com/m_rutter) | 2017, 2018 |
-| [LLBlumire/AoC2018](https://github.com/LLBlumire/AOC2018) | [@llblumire](https://twitter.com/m_rutter) | 2018 |
+| [LLBlumire/AoC2018](https://github.com/LLBlumire/AOC2018) | [@llblumire](https://twitter.com/llblumire) | 2018 |
 | [mgritter/aoc2017](https://github.com/mgritter/aoc2017) | [@markgritter](https://twitter.com/markgritter) | 2017 |
 | [rje/aoc2017](https://github.com/rje/aoc2017) | [@rje](https://twitter.com/rje) | 2017 |
 | [shssoichiro/aoc2018](https://git.onewebdev.info/soichiro/aoc2018) | - | 2018 |
