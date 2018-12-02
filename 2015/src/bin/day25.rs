@@ -1,8 +1,8 @@
 extern crate regex;
 
+use regex::Regex;
 use std::io;
 use std::io::BufRead;
-use regex::Regex;
 
 fn code_number(row: u32, column: u32) -> u32 {
     let n = row + column - 1;
@@ -30,7 +30,6 @@ fn code_test() {
     assert_eq!(code(3), 18749137);
     assert_eq!(code(11), 77061);
 }
-
 
 fn main() {
     let regex = Regex::new(r"row (\d+), column (\d+)").unwrap();

@@ -1,7 +1,7 @@
 extern crate crypto;
 
-use crypto::md5::Md5;
 use crypto::digest::Digest;
+use crypto::md5::Md5;
 use std::io;
 use std::io::BufRead;
 
@@ -16,13 +16,15 @@ fn find(secret: &[u8], number_of_zeroes: u8) -> u32 {
         }
     }
 
-    (1..).find(|n| {
-        md5.input(secret);
-        md5.input(n.to_string().as_bytes());
-        md5.result(&mut result);
-        md5.reset();
-        zeroes.iter().zip(&result).all(|(z, r)| z & r == 0)
-    }).unwrap()
+    (1..)
+        .find(|n| {
+            md5.input(secret);
+            md5.input(n.to_string().as_bytes());
+            md5.result(&mut result);
+            md5.reset();
+            zeroes.iter().zip(&result).all(|(z, r)| z & r == 0)
+        })
+        .unwrap()
 }
 
 fn main() {

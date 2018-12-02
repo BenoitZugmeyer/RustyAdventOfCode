@@ -20,16 +20,20 @@ fn sum_non_red_numbers(value: &Value) -> i64 {
         Value::Array(ref vec) => vec.iter().map(sum_non_red_numbers).sum(),
         Value::Object(ref map) => {
             let blacklist = Value::String("red".to_string());
-            if map.values().any(|v| v == &blacklist) { 0 }
-            else { map.values().map(sum_non_red_numbers).sum() }
-        },
+            if map.values().any(|v| v == &blacklist) {
+                0
+            } else {
+                map.values().map(sum_non_red_numbers).sum()
+            }
+        }
         ref value => sum_numbers(value),
     }
 }
 
 fn main() {
-
-    let (sum, non_red_sum) = io::stdin().lock().lines()
+    let (sum, non_red_sum) = io::stdin()
+        .lock()
+        .lines()
         .filter_map(|r| r.ok())
         .filter_map(|ref line| serde_json::from_str(line).ok())
         .map(|ref json| (sum_numbers(json), sum_non_red_numbers(json)))

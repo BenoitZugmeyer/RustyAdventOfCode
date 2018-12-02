@@ -1,9 +1,9 @@
 extern crate regex;
 
+use regex::Regex;
+use std::cmp::min;
 use std::io;
 use std::io::BufRead;
-use std::cmp::min;
-use regex::Regex;
 
 fn compute_distance(race_time: u32, kms: u32, run_time: u32, rest_time: u32) -> u32 {
     let sessions_count = race_time / (run_time + rest_time);
@@ -14,7 +14,8 @@ fn compute_distance(race_time: u32, kms: u32, run_time: u32, rest_time: u32) -> 
 fn main() {
     let re = Regex::new(
         r"(\w+) can fly (\d+) km/s for (\d+) seconds, but then must rest for (\d+) seconds\.",
-    ).unwrap();
+    )
+    .unwrap();
     let race_time = 2503;
 
     let parameters: Vec<_> = io::stdin()

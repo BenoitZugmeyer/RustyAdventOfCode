@@ -1,13 +1,13 @@
-extern crate regex;
 extern crate permutohedron;
+extern crate regex;
 
+use permutohedron::Heap;
+use regex::Regex;
+use std::cmp::{max, min};
+use std::collections::BTreeMap;
+use std::collections::BTreeSet;
 use std::io;
 use std::io::BufRead;
-use std::collections::BTreeSet;
-use std::collections::BTreeMap;
-use std::cmp::{max, min};
-use regex::Regex;
-use permutohedron::Heap;
 
 fn new_path(from: &str, to: &str) -> BTreeSet<String> {
     let mut path = BTreeSet::new();
@@ -17,7 +17,6 @@ fn new_path(from: &str, to: &str) -> BTreeSet<String> {
 }
 
 fn main() {
-
     let mut all_cities = BTreeSet::new();
     let mut distances = BTreeMap::new();
 
@@ -36,17 +35,20 @@ fn main() {
     let mut all_cities_vec = all_cities.iter().collect::<Vec<_>>();
 
     let (max, min) = Heap::new(&mut all_cities_vec)
-    .map(|cities| {
-        let mut cities_iter = cities.iter();
-        let starting_city = cities_iter.next().unwrap();
-        cities_iter.scan(starting_city, |previous_city, city| {
-            let distance = distances.get(&new_path(previous_city, city));
-            *previous_city = city;
-            distance
-        }).sum::<u32>()
-    })
-    .fold((u32::min_value(), u32::max_value()),
-          |(max_d, min_d), d| (max(max_d, d), min(min_d, d)));
+        .map(|cities| {
+            let mut cities_iter = cities.iter();
+            let starting_city = cities_iter.next().unwrap();
+            cities_iter
+                .scan(starting_city, |previous_city, city| {
+                    let distance = distances.get(&new_path(previous_city, city));
+                    *previous_city = city;
+                    distance
+                })
+                .sum::<u32>()
+        })
+        .fold((u32::min_value(), u32::max_value()), |(max_d, min_d), d| {
+            (max(max_d, d), min(min_d, d))
+        });
 
     println!("Shortest route: {}", min);
     println!("Longest route: {}", max);

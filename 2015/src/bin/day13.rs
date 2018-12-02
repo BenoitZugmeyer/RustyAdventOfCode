@@ -1,19 +1,18 @@
-extern crate regex;
 extern crate permutohedron;
+extern crate regex;
 
-use std::io;
-use std::iter::once;
-use std::io::BufRead;
-use std::collections::BTreeMap;
-use std::cmp::{max, min};
-use regex::Regex;
 use permutohedron::Heap;
+use regex::Regex;
+use std::cmp::{max, min};
+use std::collections::BTreeMap;
+use std::io;
+use std::io::BufRead;
+use std::iter::once;
 
 fn push<T: Ord>(v: &mut Vec<T>, item: T) -> usize {
     if let Some(position) = v.iter().position(|other| *other == item) {
         position
-    }
-    else {
+    } else {
         v.push(item);
         v.len() - 1
     }
@@ -28,25 +27,26 @@ fn compute_max_happiness<F: Fn(usize, usize) -> i32>(n: usize, getter: F) -> i32
 
     Heap::new(&mut indexes)
         .map(|sorted_indexes| {
-            sorted_indexes.iter().chain(once(&0)).scan(0, |previous_index, current_index| {
-                let result = getter(*previous_index, *current_index);
-                *previous_index = *current_index;
-                Some(result)
-            })
-            .sum::<i32>()
+            sorted_indexes
+                .iter()
+                .chain(once(&0))
+                .scan(0, |previous_index, current_index| {
+                    let result = getter(*previous_index, *current_index);
+                    *previous_index = *current_index;
+                    Some(result)
+                })
+                .sum::<i32>()
         })
         .max()
         .unwrap()
 }
 
-
-
 fn main() {
-
     let mut attendees: Vec<String> = Vec::new();
     let mut happiness: BTreeMap<(usize, usize), i32> = BTreeMap::new();
 
-    let re = Regex::new(r"(\w+) would (gain|lose) (\d+) happiness units by sitting next to (\w+)").unwrap();
+    let re = Regex::new(r"(\w+) would (gain|lose) (\d+) happiness units by sitting next to (\w+)")
+        .unwrap();
 
     for line in io::stdin().lock().lines().filter_map(|l| l.ok()) {
         if let Some(ref m) = re.captures(&line) {
@@ -56,7 +56,11 @@ fn main() {
 
             let h = {
                 let h = m.at(3).unwrap().parse::<i32>().unwrap();
-                if m.at(2).unwrap() == "lose" { -h } else { h }
+                if m.at(2).unwrap() == "lose" {
+                    -h
+                } else {
+                    h
+                }
             };
 
             *happiness.entry(key).or_insert(0) += h;

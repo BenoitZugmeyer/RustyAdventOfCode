@@ -1,6 +1,6 @@
+use std::collections::btree_set::BTreeSet;
 use std::io;
 use std::io::Read;
-use std::collections::btree_set::BTreeSet;
 
 struct Coordinates {
     x: i32,
@@ -18,7 +18,7 @@ impl Coordinates {
             b'>' => self.x += 1,
             b'v' => self.y -= 1,
             b'^' => self.y += 1,
-            _ => {},
+            _ => {}
         };
     }
 }
@@ -43,12 +43,15 @@ fn main() {
         santa_first_year.apply(ch);
         houses_first_year.insert((santa_first_year.x, santa_first_year.y));
 
-        let coords_next_year = if index % 2 == 0 { &mut santa } else { &mut robot };
+        let coords_next_year = if index % 2 == 0 {
+            &mut santa
+        } else {
+            &mut robot
+        };
         coords_next_year.apply(ch);
         houses_next_year.insert((coords_next_year.x, coords_next_year.y));
     }
 
     println!("Total first year: {}", houses_first_year.len());
     println!("Total next year: {}", houses_next_year.len());
-
 }

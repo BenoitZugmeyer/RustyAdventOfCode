@@ -1,10 +1,11 @@
-#[macro_use] extern crate lazy_static;
+#[macro_use]
+extern crate lazy_static;
 extern crate regex;
 
+use regex::Regex;
+use std::collections::BTreeMap;
 use std::io;
 use std::io::BufRead;
-use std::collections::BTreeMap;
-use regex::Regex;
 
 type Circuit = BTreeMap<u32, Operation>;
 type Signals = BTreeMap<u32, u16>;
@@ -31,9 +32,8 @@ macro_rules! signal {
             Some(n) => n,
             None => return None,
         }
-    }
+    };
 }
-
 
 impl Entry {
     fn get_signal(&self, signals: &Signals) -> Option<u16> {
@@ -57,28 +57,29 @@ impl Operation {
     }
 }
 
-
 fn parse_wire(wire: &str) -> u32 {
-    wire.bytes().rev().enumerate().fold(0u32, |total, (index, ch)| {
-        total + (u32::from(ch) - 96) * 26u32.pow(index as u32)
-    })
+    wire.bytes()
+        .rev()
+        .enumerate()
+        .fold(0u32, |total, (index, ch)| {
+            total + (u32::from(ch) - 96) * 26u32.pow(index as u32)
+        })
 }
 
 fn parse_entry(number: &str, wire: &str) -> Entry {
-    if ! number.is_empty() {
+    if !number.is_empty() {
         Entry::Number(number.parse().unwrap())
-    }
-    else if wire.is_empty() {
+    } else if wire.is_empty() {
         Entry::Number(0)
-    }
-    else {
+    } else {
         Entry::Wire(parse_wire(wire))
     }
 }
 
 fn parse(s: &str) -> Option<(u32, Operation)> {
     lazy_static! {
-        static ref RE: Regex = Regex::new(r"^(\d*)([a-z]*) ?([A-Z]*) ?(\d*)([a-z]*) -> ([a-z]+)").unwrap();
+        static ref RE: Regex =
+            Regex::new(r"^(\d*)([a-z]*) ?([A-Z]*) ?(\d*)([a-z]*) -> ([a-z]+)").unwrap();
     }
 
     RE.captures(s).map(|ref m| {
@@ -92,7 +93,7 @@ fn parse(s: &str) -> Option<(u32, Operation)> {
             "LSHIFT" => Operation::LShift(left, right),
             "NOT" => Operation::Not(right),
             "" => Operation::Identity(left),
-            _ => panic!("Unknown operation {}", m.at(3).unwrap())
+            _ => panic!("Unknown operation {}", m.at(3).unwrap()),
         };
 
         (parse_wire(m.at(6).unwrap()), operation)
@@ -120,8 +121,9 @@ fn run_circuit(circuit: &Circuit, signals: &mut Signals) -> Option<u16> {
 }
 
 fn main() {
-
-    let circuit = io::stdin().lock().lines()
+    let circuit = io::stdin()
+        .lock()
+        .lines()
         .filter_map(|l| l.ok())
         .filter_map(|ref line| parse(&line))
         .collect::<Circuit>();
@@ -132,7 +134,7 @@ fn main() {
         None => {
             println!("Signal not found on first pass :(");
             return;
-        },
+        }
         Some(s) => {
             println!("Signal on first pass: {}", s);
             s

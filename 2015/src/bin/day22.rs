@@ -1,6 +1,6 @@
+use std::cmp::max;
 use std::io;
 use std::io::BufRead;
-use std::cmp::max;
 
 trait Partition {
     fn partition(&self, needle: &Self) -> Option<(&Self, &Self)>;
@@ -30,11 +30,42 @@ struct Spell {
 impl Spell {
     fn get_availables() -> Vec<Self> {
         vec![
-            Spell { name: "Magic Missile".to_string(), cost: 53, turns: 1, damages: 4, ..Spell::default() },
-            Spell { name: "Drain".to_string(), cost: 73, turns: 1, damages: 2, heal: 2, ..Spell::default() },
-            Spell { name: "Shield".to_string(), cost: 113, turns: 6, armor: 7, ..Spell::default() },
-            Spell { name: "Poison".to_string(), cost: 173, turns: 6, damages: 3, ..Spell::default() },
-            Spell { name: "Recharge".to_string(), cost: 229, turns: 5, mana: 101, ..Spell::default() },
+            Spell {
+                name: "Magic Missile".to_string(),
+                cost: 53,
+                turns: 1,
+                damages: 4,
+                ..Spell::default()
+            },
+            Spell {
+                name: "Drain".to_string(),
+                cost: 73,
+                turns: 1,
+                damages: 2,
+                heal: 2,
+                ..Spell::default()
+            },
+            Spell {
+                name: "Shield".to_string(),
+                cost: 113,
+                turns: 6,
+                armor: 7,
+                ..Spell::default()
+            },
+            Spell {
+                name: "Poison".to_string(),
+                cost: 173,
+                turns: 6,
+                damages: 3,
+                ..Spell::default()
+            },
+            Spell {
+                name: "Recharge".to_string(),
+                cost: 229,
+                turns: 5,
+                mana: 101,
+                ..Spell::default()
+            },
         ]
     }
 }
@@ -47,8 +78,7 @@ struct Character {
     mp: i32,
 }
 
-impl Character {
-}
+impl Character {}
 
 #[derive(Debug, Clone)]
 struct State<'a> {
@@ -75,8 +105,11 @@ impl<'a> State<'a> {
     fn apply_spells(&mut self) {
         self.wizard_armor = self.world.wizard.armor;
 
-        for (spell, turns_remaining) in self.world.spells.iter().zip(self.active_spells.iter_mut()) {
-            if *turns_remaining == 0 { continue }
+        for (spell, turns_remaining) in self.world.spells.iter().zip(self.active_spells.iter_mut())
+        {
+            if *turns_remaining == 0 {
+                continue;
+            }
             *turns_remaining -= 1;
 
             self.boss_hp -= i32::from(spell.damages);
@@ -87,9 +120,13 @@ impl<'a> State<'a> {
     }
 
     fn cast_spell(&mut self, spell_index: usize) -> Option<u8> {
-        if self.active_spells[spell_index] > 0 { return None }
+        if self.active_spells[spell_index] > 0 {
+            return None;
+        }
         let spell = &self.world.spells[spell_index];
-        if self.wizard_mp < i32::from(spell.cost) { return None }
+        if self.wizard_mp < i32::from(spell.cost) {
+            return None;
+        }
         self.wizard_mp -= i32::from(spell.cost);
         self.active_spells[spell_index] = spell.turns;
         Some(spell.cost)
@@ -105,12 +142,11 @@ struct World<'a> {
 }
 
 fn fight_round(cast_spell_index: usize, mut state: State) -> Option<u32> {
-
     if state.world.hard {
         state.wizard_hp -= 1;
 
         if state.wizard_hp <= 0 {
-            return None
+            return None;
         }
     }
 
@@ -119,15 +155,14 @@ fn fight_round(cast_spell_index: usize, mut state: State) -> Option<u32> {
 
     // Boss dies
     if state.boss_hp <= 0 {
-        return Some(0)
+        return Some(0);
     }
 
     let cost = if let Some(cost) = state.cast_spell(cast_spell_index) {
         u32::from(cost)
-    }
-    else {
+    } else {
         // Not enough mana
-        return None
+        return None;
     };
 
     // Wizard spells
@@ -135,7 +170,7 @@ fn fight_round(cast_spell_index: usize, mut state: State) -> Option<u32> {
 
     // Boss dies
     if state.boss_hp <= 0 {
-        return Some(cost)
+        return Some(cost);
     }
 
     // Boss hits
@@ -143,7 +178,7 @@ fn fight_round(cast_spell_index: usize, mut state: State) -> Option<u32> {
 
     // Wizard dies
     if state.wizard_hp <= 0 {
-        return None
+        return None;
     }
 
     fight(&state).map(|c| c + cost)
@@ -158,8 +193,16 @@ fn fight(state: &State) -> Option<u32> {
 #[test]
 fn example1() {
     let world = World {
-        wizard: &Character { hp: 10, mp: 250, ..Character::default() },
-        boss: &Character { hp: 13, damage: 8, ..Character::default() },
+        wizard: &Character {
+            hp: 10,
+            mp: 250,
+            ..Character::default()
+        },
+        boss: &Character {
+            hp: 13,
+            damage: 8,
+            ..Character::default()
+        },
         spells: Spell::get_availables(),
         hard: false,
     };
@@ -170,8 +213,16 @@ fn example1() {
 #[test]
 fn example2() {
     let world = World {
-        wizard: &Character { hp: 10, mp: 250, ..Character::default() },
-        boss: &Character { hp: 14, damage: 8, ..Character::default() },
+        wizard: &Character {
+            hp: 10,
+            mp: 250,
+            ..Character::default()
+        },
+        boss: &Character {
+            hp: 14,
+            damage: 8,
+            ..Character::default()
+        },
         spells: Spell::get_availables(),
         hard: false,
     };
@@ -188,13 +239,17 @@ fn main() {
                 match key {
                     "Hit Points" => boss.hp = value,
                     "Damage" => boss.damage = value,
-                    _ => {},
+                    _ => {}
                 }
             }
         }
     }
 
-    let wizard = Character { hp: 50, mp: 500, ..Character::default() };
+    let wizard = Character {
+        hp: 50,
+        mp: 500,
+        ..Character::default()
+    };
 
     let world = World {
         boss: &boss,
@@ -205,8 +260,7 @@ fn main() {
 
     if let Some(result) = fight(&State::new(&world)) {
         println!("Minimum mana on easy mode: {}", result);
-    }
-    else {
+    } else {
         println!("Can't win on easy mode :(");
     }
 
@@ -219,8 +273,7 @@ fn main() {
 
     if let Some(result) = fight(&State::new(&world)) {
         println!("Minimum mana on hard mode: {}", result);
-    }
-    else {
+    } else {
         println!("Can't win on hard mode :(");
     }
 }

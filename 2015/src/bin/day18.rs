@@ -2,7 +2,6 @@ use std::fmt;
 use std::io;
 use std::io::BufRead;
 
-
 struct LightIterator<'a> {
     index: usize,
     grid: &'a Grid,
@@ -65,14 +64,13 @@ impl Grid {
     fn count_neighbours(&self, x: usize, y: usize) -> u32 {
         // this is very time consuming, let's optimize by hand
         macro_rules! get {
-            ($cond: expr, $x: expr, $y: expr) => (
+            ($cond: expr, $x: expr, $y: expr) => {
                 if $cond {
                     self.data[$x + $y * self.size] as u32
-                }
-                else {
+                } else {
                     0
                 }
-            )
+            };
         }
 
         let has_left = x > 0;
@@ -106,14 +104,20 @@ impl Grid {
 
         for (x, y, light) in self.iter() {
             let count = self.count_neighbours(x, y);
-            let should_turn_on = if *light { count == 2 || count == 3 } else { count == 3 };
+            let should_turn_on = if *light {
+                count == 2 || count == 3
+            } else {
+                count == 3
+            };
 
             if should_turn_on {
                 result.turn_on(x, y);
             }
         }
 
-        if self.is_bogus { result.set_bogus() }
+        if self.is_bogus {
+            result.set_bogus()
+        }
 
         result
     }
@@ -144,7 +148,12 @@ impl fmt::Display for Grid {
 fn main() {
     let mut original_grid = Grid::new();
 
-    for (y, line) in io::stdin().lock().lines().filter_map(|l| l.ok()).enumerate() {
+    for (y, line) in io::stdin()
+        .lock()
+        .lines()
+        .filter_map(|l| l.ok())
+        .enumerate()
+    {
         if original_grid.size == 0 {
             original_grid.set_size(line.len());
         }

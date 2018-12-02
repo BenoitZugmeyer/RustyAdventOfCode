@@ -1,4 +1,3 @@
-
 use std::io;
 
 #[allow(dead_code)]
@@ -36,16 +35,17 @@ fn transform(mut input: &[u8]) -> Vec<u8> {
 fn main() {
     let mut input_str = String::new();
     io::stdin().read_line(&mut input_str).unwrap();
-    let mut input: Vec<_> = input_str.chars()
+    let mut input: Vec<_> = input_str
+        .chars()
         .filter_map(|ch| ch.to_digit(10))
         .map(|d| d as u8)
         .collect();
 
-    for _ in 0 .. 40 {
+    for _ in 0..40 {
         input = transform(&input);
     }
     println!("40 times: {}", input.len());
-    for _ in 0 .. 10 {
+    for _ in 0..10 {
         input = transform(&input);
     }
     println!("50 times: {}", input.len());

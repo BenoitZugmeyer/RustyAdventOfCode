@@ -2,20 +2,24 @@ use std::io::stdin;
 use std::io::Read;
 
 fn main() {
-
-    let (negative_floor, final_floor) = stdin().bytes()
+    let (negative_floor, final_floor) = stdin()
+        .bytes()
         .scan(0, |acc, result| {
             match result {
                 Ok(b'(') => *acc += 1,
                 Ok(b')') => *acc -= 1,
-                _ => {},
+                _ => {}
             };
             Some(*acc)
         })
         .enumerate()
         .fold((None, 0), |(negative_floor, _), (index, floor)| {
             (
-                if negative_floor.is_none() && floor == -1 { Some(index + 1) } else { negative_floor },
+                if negative_floor.is_none() && floor == -1 {
+                    Some(index + 1)
+                } else {
+                    negative_floor
+                },
                 floor,
             )
         });
@@ -27,5 +31,4 @@ fn main() {
     } else {
         println!("Santa doesn't go to the floor -1");
     }
-
 }

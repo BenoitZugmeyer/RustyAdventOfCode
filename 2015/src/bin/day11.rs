@@ -8,22 +8,20 @@ fn is_password_valid(password: &[u8]) -> bool {
     for (index, &ch) in password.iter().enumerate() {
         match ch {
             b'i' | b'l' | b'o' => return false,
-            _ => {},
+            _ => {}
         }
 
         if previous == Some(ch) {
             char_pair_count += 1;
             previous = None;
-        }
-        else {
+        } else {
             previous = Some(ch);
         }
 
-        if ! has_three_increasing_chars {
-            has_three_increasing_chars =
-                index + 2 < password.len() &&
-                password[index + 1] == ch + 1 &&
-                password[index + 2] == ch + 2;
+        if !has_three_increasing_chars {
+            has_three_increasing_chars = index + 2 < password.len()
+                && password[index + 1] == ch + 1
+                && password[index + 2] == ch + 2;
         }
     }
 
@@ -32,7 +30,7 @@ fn is_password_valid(password: &[u8]) -> bool {
 
 fn next_password(password: &mut Vec<u8>) {
     let mut rem = true;
-    for index in (0 .. password.len()).rev() {
+    for index in (0..password.len()).rev() {
         if rem {
             match password[index] {
                 n if n >= b'z' => password[index] = b'a',
@@ -56,7 +54,9 @@ struct ValidPasswords {
 
 impl ValidPasswords {
     fn new(password: String) -> Self {
-        ValidPasswords { current_password: password.into_bytes() }
+        ValidPasswords {
+            current_password: password.into_bytes(),
+        }
     }
 }
 
@@ -99,7 +99,6 @@ fn next_password_test() {
 }
 
 fn main() {
-
     let mut input_str = String::new();
     io::stdin().read_line(&mut input_str).unwrap();
     let mut valid_passwords = ValidPasswords::new(input_str);

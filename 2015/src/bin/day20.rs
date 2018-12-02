@@ -37,11 +37,17 @@ struct HouseIterator {
 
 impl HouseIterator {
     fn new(present_factor: u32, max_houses: u32) -> Self {
-        HouseIterator { index: 0, present_factor, max_houses }
+        HouseIterator {
+            index: 0,
+            present_factor,
+            max_houses,
+        }
     }
 
     fn min_house(&mut self, min_presents: u32) -> Option<u32> {
-        self.skip_while(|&(_, presents)| presents < min_presents).next().map(|(house, _)| house)
+        self.skip_while(|&(_, presents)| presents < min_presents)
+            .next()
+            .map(|(house, _)| house)
     }
 }
 
@@ -52,11 +58,12 @@ impl Iterator for HouseIterator {
         self.index += 1;
         let mut presents = 0;
         for (a, b) in Divisors::new(self.index) {
-            if a > self.max_houses { break; }
+            if a > self.max_houses {
+                break;
+            }
             if a == b {
                 presents += a;
-            }
-            else {
+            } else {
                 presents += a + b;
             }
         }
@@ -65,7 +72,14 @@ impl Iterator for HouseIterator {
 }
 
 fn main() {
-    let min_presents = io::stdin().lock().lines().next().unwrap().unwrap().parse::<u32>().unwrap();
+    let min_presents = io::stdin()
+        .lock()
+        .lines()
+        .next()
+        .unwrap()
+        .unwrap()
+        .parse::<u32>()
+        .unwrap();
 
     let mut infinite_delivery = HouseIterator::new(10, u32::max_value());
     if let Some(house) = infinite_delivery.min_house(min_presents) {

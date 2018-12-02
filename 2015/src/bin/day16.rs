@@ -1,11 +1,12 @@
-#[macro_use] extern crate lazy_static;
+#[macro_use]
+extern crate lazy_static;
 extern crate regex;
 
+use regex::Regex;
 use std::borrow::Borrow;
 use std::collections::HashMap;
 use std::io;
 use std::io::BufRead;
-use regex::Regex;
 
 #[derive(Debug)]
 struct Things {
@@ -15,7 +16,10 @@ struct Things {
 
 impl Things {
     fn new(name: &str) -> Self {
-        Things { name: name.to_string(), data: HashMap::new() }
+        Things {
+            name: name.to_string(),
+            data: HashMap::new(),
+        }
     }
 
     fn new_from_line(line: &str) -> Option<Self> {
@@ -44,21 +48,23 @@ impl Things {
 
     fn _matches<F: Fn(&str, &u8, &u8) -> bool>(&self, expectations: &Self, cmp: F) -> bool {
         self.data.iter().all(|(key, value)| {
-            expectations.data.get(key).map_or(false, |expected_value| cmp(key.borrow(), value, expected_value))
+            expectations.data.get(key).map_or(false, |expected_value| {
+                cmp(key.borrow(), value, expected_value)
+            })
         })
     }
 
     fn matches(&self, expectations: &Self) -> bool {
-        self._matches(expectations, |_, value, expected_value| value == expected_value)
+        self._matches(expectations, |_, value, expected_value| {
+            value == expected_value
+        })
     }
 
     fn adjusted_matches(&self, expectations: &Self) -> bool {
-        self._matches(expectations, |key, value, expected_value| {
-            match key {
-                "cats" | "trees" => value > expected_value,
-                "pomeranians" | "goldfish" => value < expected_value,
-                _ => value == expected_value,
-            }
+        self._matches(expectations, |key, value, expected_value| match key {
+            "cats" | "trees" => value > expected_value,
+            "pomeranians" | "goldfish" => value < expected_value,
+            _ => value == expected_value,
         })
     }
 }
@@ -66,8 +72,7 @@ impl Things {
 fn print_aunt_sue_name_found(which: &str, name_found: Option<String>) {
     if let Some(name) = name_found {
         println!("{} Aunt Sue found: {}", which, name);
-    }
-    else {
+    } else {
         println!("{} Aunt Sue not found :(", which);
     }
 }
@@ -87,7 +92,9 @@ fn main() {
     expectations.set("cars", 2);
     expectations.set("perfumes", 1);
 
-    let aunt_sues = stdin.lock().lines()
+    let aunt_sues = stdin
+        .lock()
+        .lines()
         .filter_map(|l| l.ok())
         .filter_map(|ref line| Things::new_from_line(line));
 
