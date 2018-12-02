@@ -1,10 +1,10 @@
 #[macro_use]
 extern crate nom;
 
-use std::hash::{Hash, Hasher};
 use std::collections::hash_map::DefaultHasher;
+use std::hash::{Hash, Hasher};
 
-use std::collections::{HashSet, BTreeSet, VecDeque, BTreeMap};
+use std::collections::{BTreeMap, BTreeSet, HashSet, VecDeque};
 use std::io::stdin;
 use std::io::Read;
 
@@ -24,8 +24,7 @@ impl Object {
 
     fn name(&self) -> u64 {
         match *self {
-            Object::Generator(name) |
-            Object::Microchip(name) => name,
+            Object::Generator(name) | Object::Microchip(name) => name,
         }
     }
 }
@@ -196,20 +195,23 @@ impl State {
     fn hash(&self) -> (usize, Vec<Vec<(usize, bool)>>) {
         let mut set = BTreeMap::new();
 
-        (self.floor,
-         self.objects
-             .iter()
-             .map(|row| {
-                let mut a: Vec<_> = row.iter()
-                    .map(|o| {
-                        let len = set.len();
-                        (*set.entry(o.name()).or_insert(len), o.is_generator())
-                    })
-                    .collect();
-                a.sort();
-                a
-            })
-             .collect())
+        (
+            self.floor,
+            self.objects
+                .iter()
+                .map(|row| {
+                    let mut a: Vec<_> = row
+                        .iter()
+                        .map(|o| {
+                            let len = set.len();
+                            (*set.entry(o.name()).or_insert(len), o.is_generator())
+                        })
+                        .collect();
+                    a.sort();
+                    a
+                })
+                .collect(),
+        )
     }
 }
 
@@ -224,7 +226,6 @@ fn get_min_steps(objects: &[BTreeSet<Object>]) -> Option<u32> {
     let mut steps = Vec::new();
 
     while let Some((state, step)) = states.pop_front() {
-
         if state.is_final() {
             steps.push(step);
         }
@@ -242,9 +243,10 @@ fn get_min_steps(objects: &[BTreeSet<Object>]) -> Option<u32> {
 }
 
 fn main() {
-
     let mut input = Vec::new();
-    stdin().read_to_end(&mut input).expect("Failed to read stdin");
+    stdin()
+        .read_to_end(&mut input)
+        .expect("Failed to read stdin");
     let (rest, mut objects) = parse_instruction(&input).unwrap();
     if !rest.is_empty() {
         panic!("Can't parse the rest of the input: {}", new_string(rest));

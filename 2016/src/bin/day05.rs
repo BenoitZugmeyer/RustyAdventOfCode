@@ -1,13 +1,12 @@
 extern crate crypto;
+use crypto::digest::Digest;
+use crypto::md5::Md5;
+use std::char;
 use std::io::stdin;
 use std::io::Read;
 use std::io::Write;
-use std::char;
-use crypto::md5::Md5;
-use crypto::digest::Digest;
 
 fn main() {
-
     let salt: Vec<_> = stdin()
         .bytes()
         .filter_map(|b| b.ok())
@@ -28,8 +27,10 @@ fn main() {
         md5.result(&mut result);
 
         if result[0] == 0 && result[1] == 0 && result[2] & 0xf0 == 0 {
-            Some((char::from_digit(u32::from(result[2]) & 0x0f, 16).unwrap(),
-                  char::from_digit(u32::from(result[3] >> 4) & 0x0f, 16).unwrap()))
+            Some((
+                char::from_digit(u32::from(result[2]) & 0x0f, 16).unwrap(),
+                char::from_digit(u32::from(result[3] >> 4) & 0x0f, 16).unwrap(),
+            ))
         } else {
             None
         }
@@ -58,6 +59,8 @@ fn main() {
         }
     }
     println!("Part 1: {}", password1);
-    println!("Part 2: {}",
-             password2.iter().map(|a| a.unwrap()).collect::<String>());
+    println!(
+        "Part 2: {}",
+        password2.iter().map(|a| a.unwrap()).collect::<String>()
+    );
 }

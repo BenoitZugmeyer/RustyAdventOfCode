@@ -2,10 +2,10 @@ extern crate itertools;
 extern crate regex;
 
 use regex::Regex;
-use std::io::stdin;
-use std::io::BufRead;
 use std::collections::BTreeMap;
 use std::collections::BTreeSet;
+use std::io::stdin;
+use std::io::BufRead;
 
 use itertools::Itertools;
 
@@ -36,17 +36,19 @@ struct Params {
 
 impl Params {
     fn next(&self, coords: Coords) -> Vec<Coords> {
-        [(coords.x + 1, coords.y),
-         (coords.x - 1, coords.y),
-         (coords.x, coords.y + 1),
-         (coords.x, coords.y - 1)]
-            .iter()
-            .map(|&(x, y)| Coords::new(x, y))
-            .filter(|coord| {
-                coord.x >= 0 && coord.y >= 0 && coord.x <= self.max.x && coord.y <= self.max.y
-            })
-            .filter(|coord| !self.full.contains(coord))
-            .collect()
+        [
+            (coords.x + 1, coords.y),
+            (coords.x - 1, coords.y),
+            (coords.x, coords.y + 1),
+            (coords.x, coords.y - 1),
+        ]
+        .iter()
+        .map(|&(x, y)| Coords::new(x, y))
+        .filter(|coord| {
+            coord.x >= 0 && coord.y >= 0 && coord.x <= self.max.x && coord.y <= self.max.y
+        })
+        .filter(|coord| !self.full.contains(coord))
+        .collect()
     }
 }
 
@@ -59,7 +61,11 @@ fn find_path_to(params: &Params, position: Coords, goal: Coords) -> Option<u32> 
     map.insert(position, 0);
 
     for i in 0.. {
-        let aa: Vec<_> = map.iter().filter(|&(_, v)| v == &i).map(|(v, _)| *v).collect();
+        let aa: Vec<_> = map
+            .iter()
+            .filter(|&(_, v)| v == &i)
+            .map(|(v, _)| *v)
+            .collect();
         let mut should_go_next = false;
         for p in &aa {
             for next in &params.next(*p) {
@@ -80,35 +86,40 @@ fn find_path_to(params: &Params, position: Coords, goal: Coords) -> Option<u32> 
     unreachable!();
 }
 
-
 fn main() {
     let re = Regex::new(r"x(\d+)-y(\d+).+?(\d+).+?(\d+).+?(\d+).+?(\d+)").unwrap();
     let stdin = stdin();
-    let nodes: Vec<_> = stdin.lock()
+    let nodes: Vec<_> = stdin
+        .lock()
         .lines()
         .filter_map(|l| l.ok())
         .filter_map(|line| {
-            re.captures(&line).map(|cap| {
-                Node {
-                    coords: Coords::new(cap.at(1).unwrap().parse().unwrap(),
-                                        cap.at(2).unwrap().parse().unwrap()),
-                    used: cap.at(4).unwrap().parse().unwrap(),
-                    available: cap.at(5).unwrap().parse().unwrap(),
-                }
+            re.captures(&line).map(|cap| Node {
+                coords: Coords::new(
+                    cap.at(1).unwrap().parse().unwrap(),
+                    cap.at(2).unwrap().parse().unwrap(),
+                ),
+                used: cap.at(4).unwrap().parse().unwrap(),
+                available: cap.at(5).unwrap().parse().unwrap(),
             })
         })
         .collect();
 
-    let n = nodes.iter()
+    let n = nodes
+        .iter()
         .tuple_combinations()
         .filter(|&(a, b)| are_compatible(a, b) || are_compatible(b, a))
         .count();
     println!("Part 1: {:?}", n);
 
     let max = nodes.iter().map(|n| n.coords).max().unwrap();
-    let goal = nodes.iter().find(|n| n.coords.x == max.x && n.coords.y == 0).unwrap();
+    let goal = nodes
+        .iter()
+        .find(|n| n.coords.x == max.x && n.coords.y == 0)
+        .unwrap();
 
-    let min_used = nodes.iter()
+    let min_used = nodes
+        .iter()
         .filter_map(|n| if n.used > 0 { Some(n.used) } else { None })
         .min()
         .unwrap();
@@ -120,12 +131,22 @@ fn main() {
 
     let params = Params {
         max,
-        full: nodes.iter().filter(|n| n.used > empty_size).map(|n| n.coords).collect(),
+        full: nodes
+            .iter()
+            .filter(|n| n.used > empty_size)
+            .map(|n| n.coords)
+            .collect(),
     };
 
-    println!("Part 2: {:?}",
-             find_path_to(&params,
-                          empty.coords,
-                          Coords::new(goal.coords.x - 1, goal.coords.y)).unwrap() +
-             (goal.coords.x as u32 - 1) * 5 + 1);
+    println!(
+        "Part 2: {:?}",
+        find_path_to(
+            &params,
+            empty.coords,
+            Coords::new(goal.coords.x - 1, goal.coords.y)
+        )
+        .unwrap()
+            + (goal.coords.x as u32 - 1) * 5
+            + 1
+    );
 }

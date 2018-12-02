@@ -42,7 +42,6 @@ fn keypad2_char(state: (i8, i8)) -> char {
 }
 
 fn main() {
-
     let (code_1, code_2) = stdin()
         .bytes()
         .filter_map(|b| b.ok())
@@ -56,13 +55,14 @@ fn main() {
             })
         })
         .filter_map(|b| b)
-        .fold((String::new(), String::new()),
-              |(mut s1, mut s2), (ch1, ch2)| {
-                  s1.push(ch1);
-                  s2.push(ch2);
-                  (s1, s2)
-              });
+        .fold(
+            (String::new(), String::new()),
+            |(mut s1, mut s2), (ch1, ch2)| {
+                s1.push(ch1);
+                s2.push(ch2);
+                (s1, s2)
+            },
+        );
     println!("Part 1: {}", code_1);
     println!("Part 2: {}", code_2);
-
 }

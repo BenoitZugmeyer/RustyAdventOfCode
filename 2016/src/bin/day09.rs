@@ -2,7 +2,8 @@ use std::io::stdin;
 use std::io::Read;
 
 fn read_int<B>(chars: &mut B) -> u64
-    where B: Iterator<Item = char>
+where
+    B: Iterator<Item = char>,
 {
     let mut result = 0u64;
     for ch in chars {
@@ -14,7 +15,6 @@ fn read_int<B>(chars: &mut B) -> u64
     }
     result
 }
-
 
 fn decompress_len(s: &str, recurse: bool) -> u64 {
     let mut result = 0;

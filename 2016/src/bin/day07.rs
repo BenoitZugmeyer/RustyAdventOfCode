@@ -6,11 +6,16 @@ use std::io::stdin;
 use std::io::Read;
 
 fn has_abba(s: &str) -> bool {
-    s.chars().tuple_windows().any(|(a, b, c, d)| a == d && b == c && a != b)
+    s.chars()
+        .tuple_windows()
+        .any(|(a, b, c, d)| a == d && b == c && a != b)
 }
 
 fn get_aba(s: &str) -> Vec<(char, char, char)> {
-    s.chars().tuple_windows().filter(|&(a, b, c)| a == c && a != b).collect()
+    s.chars()
+        .tuple_windows()
+        .filter(|&(a, b, c)| a == c && a != b)
+        .collect()
 }
 
 fn support_tls(ip: &[String]) -> bool {
@@ -49,23 +54,33 @@ fn support_ssl(ip: &[String]) -> bool {
 }
 
 fn main() {
-
     let (count_tls, count_ssl) = stdin()
         .bytes()
         .filter_map(|b| b.ok())
         .map(|b| b as char)
         .batching(|it| {
-            let s: Vec<_> = it.take_while(|ch| ch != &'\n')
+            let s: Vec<_> = it
+                .take_while(|ch| ch != &'\n')
                 .batching(|it| {
                     let s: String = it.take_while(|ch| ch != &'[' && ch != &']').collect();
-                    if s.is_empty() { None } else { Some(s) }
+                    if s.is_empty() {
+                        None
+                    } else {
+                        Some(s)
+                    }
                 })
                 .collect();
-            if s.is_empty() { None } else { Some(s) }
+            if s.is_empty() {
+                None
+            } else {
+                Some(s)
+            }
         })
         .fold((0, 0), |(counttls, countssl), ip| {
-            (counttls + if support_tls(&ip) { 1 } else { 0 },
-             countssl + if support_ssl(&ip) { 1 } else { 0 })
+            (
+                counttls + if support_tls(&ip) { 1 } else { 0 },
+                countssl + if support_ssl(&ip) { 1 } else { 0 },
+            )
         });
 
     println!("Part 1: {}", count_tls);

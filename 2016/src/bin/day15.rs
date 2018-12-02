@@ -17,19 +17,20 @@ impl Disc {
 
 fn get_start_time(discs: &[Disc]) -> Option<u32> {
     (0..).find(|start_time| {
-        discs.iter()
+        discs
+            .iter()
             .enumerate()
             .all(|(index, disc)| disc.has_slot_up(start_time + index as u32 + 1))
     })
 }
 
 fn main() {
-
     let re = Regex::new(r"^Disc #\d+ has (\d+) positions; at time=0, it is at position (\d+)\.$")
         .unwrap();
 
     let stdin = stdin();
-    let mut discs: Vec<_> = stdin.lock()
+    let mut discs: Vec<_> = stdin
+        .lock()
         .lines()
         .filter_map(|l| l.ok())
         .filter_map(|line| {

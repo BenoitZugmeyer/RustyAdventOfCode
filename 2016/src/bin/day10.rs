@@ -1,16 +1,17 @@
-extern crate regex;
 extern crate itertools;
+extern crate regex;
 use itertools::Itertools;
 use itertools::MinMaxResult;
+use regex::Regex;
+use std::collections::BTreeMap;
 use std::fmt;
 use std::io::stdin;
 use std::io::BufRead;
 use std::str::FromStr;
-use regex::Regex;
-use std::collections::BTreeMap;
 
 fn parse<T: FromStr>(s: Option<&str>) -> T
-    where T::Err: fmt::Display
+where
+    T::Err: fmt::Display,
 {
     let string = s.expect("None passed to parse()");
     match string.parse() {
@@ -119,9 +120,9 @@ fn main() {
         }
     }
 
-    let mult = *get_value(&mut values, Holder::Output(0)).first().unwrap() *
-               *get_value(&mut values, Holder::Output(1)).first().unwrap() *
-               *get_value(&mut values, Holder::Output(2)).first().unwrap();
+    let mult = *get_value(&mut values, Holder::Output(0)).first().unwrap()
+        * *get_value(&mut values, Holder::Output(1)).first().unwrap()
+        * *get_value(&mut values, Holder::Output(2)).first().unwrap();
     println!("Part 1: {:?}", responsible);
     println!("Part 2: {:?}", mult);
 }

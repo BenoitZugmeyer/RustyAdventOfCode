@@ -1,8 +1,8 @@
 extern crate regex;
-use std::io::stdin;
-use std::io::Read;
 use regex::Regex;
 use std::collections::BTreeSet;
+use std::io::stdin;
+use std::io::Read;
 
 #[derive(Ord, Eq, PartialOrd, PartialEq, Copy, Clone, Debug)]
 struct Coordinates {
@@ -31,20 +31,24 @@ impl Coordinates {
 }
 
 fn main() {
-
     let mut input = String::new();
-    stdin().read_to_string(&mut input).expect("Failed to read stdin");
+    stdin()
+        .read_to_string(&mut input)
+        .expect("Failed to read stdin");
 
     let re = Regex::new(r"(?P<turn>[RL])(?P<distance>\d+)").unwrap();
 
     let mut previous_locations = BTreeSet::new();
 
-    let (location, _, cross_location) = re.captures_iter(&input)
-        .fold((Coordinates::new(0, 0), 90u16, None),
-              |(location, direction, cross_location), caps| {
+    let (location, _, cross_location) = re.captures_iter(&input).fold(
+        (Coordinates::new(0, 0), 90u16, None),
+        |(location, direction, cross_location), caps| {
             let turn = caps.name("turn").unwrap().chars().nth(0).unwrap();
-            let distance =
-                caps.name("distance").unwrap().parse().expect("Failed to parse distance");
+            let distance = caps
+                .name("distance")
+                .unwrap()
+                .parse()
+                .expect("Failed to parse distance");
 
             let new_direction = match turn {
                 'L' => direction + 90,
@@ -68,7 +72,8 @@ fn main() {
             });
 
             (new_location, new_direction, new_cross_location)
-        });
+        },
+    );
 
     println!("Part 1: {}", location.distance());
     println!("Part 2: {}", cross_location.unwrap().distance());

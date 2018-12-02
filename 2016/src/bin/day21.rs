@@ -169,20 +169,15 @@ fn test_move() {
 named!(
     parse_number<i32>,
     do_parse!(
-        minus: opt!(tag!("-")) >>
-        n: take_while1!(nom::is_digit) >>
-        (if minus == Some(b"-") { -1 } else { 1 } *
-         n.iter().fold(0, |acc, item| acc * 10 + i32::from(item - b'0')))
+        minus: opt!(tag!("-"))
+            >> n: take_while1!(nom::is_digit)
+            >> (if minus == Some(b"-") { -1 } else { 1 }
+                * n.iter()
+                    .fold(0, |acc, item| acc * 10 + i32::from(item - b'0')))
     )
 );
 
-named!(
-    parse_char<char>,
-    do_parse!(
-        ch: take!(1) >>
-        (ch[0] as char)
-    )
-);
+named!(parse_char<char>, do_parse!(ch: take!(1) >> (ch[0] as char)));
 
 named!(
     parse_instruction(&[u8]) -> Instruction,
@@ -242,7 +237,6 @@ named!(
 );
 
 fn main() {
-
     let mut input: Vec<_> = "abcdefgh".chars().collect();
 
     let instructions: Vec<_> = stdin()

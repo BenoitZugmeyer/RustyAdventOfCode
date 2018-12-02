@@ -1,8 +1,8 @@
-use std::collections::BTreeSet;
+use std::cmp;
 use std::collections::BTreeMap;
+use std::collections::BTreeSet;
 use std::io::stdin;
 use std::io::Read;
-use std::cmp;
 
 #[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone)]
 struct Coords {
@@ -16,8 +16,12 @@ impl Coords {
     }
 
     fn is_wall(&self, favorite_number: u32) -> bool {
-        let n = self.x * self.x + 3 * self.x + 2 * self.x * self.y + self.y + self.y * self.y +
-                favorite_number;
+        let n = self.x * self.x
+            + 3 * self.x
+            + 2 * self.x * self.y
+            + self.y
+            + self.y * self.y
+            + favorite_number;
         n.count_ones() % 2 == 1
     }
 
@@ -30,7 +34,6 @@ impl Coords {
             .collect()
     }
 }
-
 
 fn print(max: &Coords, favorite_number: u32, path: &BTreeSet<Coords>) {
     print!("   ");
@@ -55,13 +58,13 @@ fn print(max: &Coords, favorite_number: u32, path: &BTreeSet<Coords>) {
     }
 }
 
-fn find_path(position: &Coords,
-             destination: &Coords,
-             favorite_number: u32,
-             mut previous_positions: &mut BTreeMap<Coords, u32>,
-             steps: u32)
-             -> Option<u32> {
-
+fn find_path(
+    position: &Coords,
+    destination: &Coords,
+    favorite_number: u32,
+    mut previous_positions: &mut BTreeMap<Coords, u32>,
+    steps: u32,
+) -> Option<u32> {
     if let Some(s) = previous_positions.get(position) {
         if *s <= steps {
             return None;
@@ -75,12 +78,13 @@ fn find_path(position: &Coords,
     } else {
         let mut shortest_path: Option<u32> = None;
         for coord in &position.next(favorite_number) {
-            if let Some(path) = find_path(coord,
-                                          destination,
-                                          favorite_number,
-                                          &mut previous_positions,
-                                          steps + 1) {
-
+            if let Some(path) = find_path(
+                coord,
+                destination,
+                favorite_number,
+                &mut previous_positions,
+                steps + 1,
+            ) {
                 shortest_path = Some(cmp::min(path, shortest_path.unwrap_or(1000)));
             }
         }
@@ -88,10 +92,12 @@ fn find_path(position: &Coords,
     }
 }
 
-fn find_reachable_path(position: &Coords,
-                       favorite_number: u32,
-                       mut previous_positions: &mut BTreeMap<Coords, u32>,
-                       steps: u32) {
+fn find_reachable_path(
+    position: &Coords,
+    favorite_number: u32,
+    mut previous_positions: &mut BTreeMap<Coords, u32>,
+    steps: u32,
+) {
     if let Some(s) = previous_positions.get(position) {
         if *s >= steps {
             return;
@@ -110,27 +116,29 @@ fn main() {
     let input = stdin()
         .bytes()
         .filter_map(|b| {
-            b.ok().and_then(|b| {
-                match b {
-                    b'0'...b'9' => Some(u32::from(b - b'0')),
-                    _ => None,
-                }
+            b.ok().and_then(|b| match b {
+                b'0'...b'9' => Some(u32::from(b - b'0')),
+                _ => None,
             })
         })
         .fold(0u32, |acc, n| acc * 10 + n);
 
-    if let Some(path) = find_path(&Coords::new(1, 1),
-                                  &Coords::new(31, 39),
-                                  input,
-                                  &mut BTreeMap::new(),
-                                  0) {
+    if let Some(path) = find_path(
+        &Coords::new(1, 1),
+        &Coords::new(31, 39),
+        input,
+        &mut BTreeMap::new(),
+        0,
+    ) {
         println!("Part 1: {}", path);
     }
 
     let mut positions = BTreeMap::new();
     find_reachable_path(&Coords::new(1, 1), input, &mut positions, 50);
-    print(&Coords::new(20, 20),
-          input,
-          &positions.keys().cloned().collect());
+    print(
+        &Coords::new(20, 20),
+        input,
+        &positions.keys().cloned().collect(),
+    );
     println!("Part 2: {}", positions.len());
 }

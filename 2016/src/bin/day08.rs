@@ -1,10 +1,9 @@
 extern crate regex;
 use regex::Regex;
-use std::io::stdin;
-use std::fmt;
 use std::cmp::min;
+use std::fmt;
+use std::io::stdin;
 use std::io::BufRead;
-
 
 const ROWS: usize = 6;
 const COLUMNS: usize = 50;
@@ -17,7 +16,9 @@ struct Screen {
 
 impl Screen {
     fn new() -> Self {
-        Screen { grid: [[false; COLUMNS]; ROWS] }
+        Screen {
+            grid: [[false; COLUMNS]; ROWS],
+        }
     }
     fn rect(&mut self, a: usize, b: usize) {
         for x in 0..min(a, COLUMNS) {
@@ -46,7 +47,10 @@ impl Screen {
     }
 
     fn count(&self) -> usize {
-        self.grid.iter().map(|row| row.iter().filter(|v| **v).count()).sum()
+        self.grid
+            .iter()
+            .map(|row| row.iter().filter(|v| **v).count())
+            .sum()
     }
 }
 
@@ -66,16 +70,17 @@ impl fmt::Display for Screen {
     }
 }
 
-
 fn main() {
-    let re = Regex::new(r"^(?x)(?:
+    let re = Regex::new(
+        r"^(?x)(?:
         rect\s(\d+)x(\d+)
         |
         rotate\scolumn\sx=(\d+)\sby\s(\d+)
         |
         rotate\srow\sy=(\d+)\sby\s(\d+)
-    )$")
-        .unwrap();
+    )$",
+    )
+    .unwrap();
     let stdin = stdin();
     let mut screen = Screen::new();
     for line in stdin.lock().lines().filter_map(|l| l.ok()) {

@@ -35,8 +35,7 @@ impl Instruction {
     fn toggle(&mut self) {
         *self = match *self {
             Instruction::Inc(ref a) => Instruction::Dec(a.clone()),
-            Instruction::Tgl(ref a) |
-            Instruction::Dec(ref a) => Instruction::Inc(a.clone()),
+            Instruction::Tgl(ref a) | Instruction::Dec(ref a) => Instruction::Inc(a.clone()),
             Instruction::Jnz(ref a, ref b) => Instruction::Cpy(a.clone(), b.clone()),
             Instruction::Cpy(ref a, ref b) => Instruction::Jnz(a.clone(), b.clone()),
         }
@@ -49,7 +48,9 @@ struct Memory {
 
 impl Memory {
     fn new() -> Memory {
-        Memory { registers: BTreeMap::new() }
+        Memory {
+            registers: BTreeMap::new(),
+        }
     }
 
     fn get(&mut self, r: Register) -> &mut i32 {
@@ -64,35 +65,31 @@ impl Memory {
 named!(
     parse_number<i32>,
     do_parse!(
-        minus: opt!(tag!("-")) >>
-        n: take_while1!(nom::is_digit) >>
-        (if minus == Some(b"-") { -1 } else { 1 } *
-         n.iter().fold(0, |acc, item| acc * 10 + i32::from(item - b'0')))
+        minus: opt!(tag!("-"))
+            >> n: take_while1!(nom::is_digit)
+            >> (if minus == Some(b"-") { -1 } else { 1 }
+                * n.iter()
+                    .fold(0, |acc, item| acc * 10 + i32::from(item - b'0')))
     )
 );
 
 named!(
     parse_register<Register>,
-    map!(take_while1!(nom::is_alphabetic), |bytes: &[u8]| bytes[0] - b'a')
+    map!(take_while1!(nom::is_alphabetic), |bytes: &[u8]| bytes[0]
+        - b'a')
 );
 
 named!(
     parse_value<Value>,
     alt!(
-        map!(parse_number, |n| Value::Const(n))
-        |
-        map!(parse_register, |n| Value::FromRegister(n))
+        map!(parse_number, |n| Value::Const(n)) | map!(parse_register, |n| Value::FromRegister(n))
     )
 );
 
 named!(
     parse_cpy<Instruction>,
     do_parse!(
-        tag!("cpy ") >>
-        n: parse_value >>
-        tag!(" ") >>
-        m: parse_value >>
-        (Instruction::Cpy(n, m))
+        tag!("cpy ") >> n: parse_value >> tag!(" ") >> m: parse_value >> (Instruction::Cpy(n, m))
     )
 );
 
@@ -114,11 +111,7 @@ named!(
 named!(
     parse_jnz<Instruction>,
     do_parse!(
-        tag!("jnz ") >>
-        n: parse_value >>
-        tag!(" ") >>
-        m: parse_value >>
-        (Instruction::Jnz(n, m))
+        tag!("jnz ") >> n: parse_value >> tag!(" ") >> m: parse_value >> (Instruction::Jnz(n, m))
     )
 );
 
@@ -170,14 +163,17 @@ fn exec(instructions: &mut [Instruction], memory: &mut Memory) {
     }
 }
 
-
-
 fn main() {
     let mut input = Vec::new();
-    stdin().read_to_end(&mut input).expect("Failed to read stdin");
+    stdin()
+        .read_to_end(&mut input)
+        .expect("Failed to read stdin");
     let (rest, instructions) = parse_input(&input).unwrap();
     if !rest.is_empty() {
-        panic!("Can't parse the rest of the input: {:?}", String::from_utf8_lossy(rest));
+        panic!(
+            "Can't parse the rest of the input: {:?}",
+            String::from_utf8_lossy(rest)
+        );
     }
 
     let mut memory = Memory::new();

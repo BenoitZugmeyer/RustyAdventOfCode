@@ -9,15 +9,25 @@ enum Tile {
 
 type Row = Vec<Tile>;
 
-
 fn generate_room(first_row: Row) -> Box<Iterator<Item = Row>> {
     Box::new((0..).scan(first_row, |next_row, _| {
         let new_row: Vec<_> = (0..next_row.len())
             .map(|column| {
-                let left = if column > 0 { next_row[column - 1] } else { Tile::Safe };
-                let right =
-                    if column < next_row.len() - 1 { next_row[column + 1] } else { Tile::Safe };
-                if left == right { Tile::Safe } else { Tile::Trap }
+                let left = if column > 0 {
+                    next_row[column - 1]
+                } else {
+                    Tile::Safe
+                };
+                let right = if column < next_row.len() - 1 {
+                    next_row[column + 1]
+                } else {
+                    Tile::Safe
+                };
+                if left == right {
+                    Tile::Safe
+                } else {
+                    Tile::Trap
+                }
             })
             .collect();
         Some(std::mem::replace(next_row, new_row))
@@ -25,7 +35,6 @@ fn generate_room(first_row: Row) -> Box<Iterator<Item = Row>> {
 }
 
 fn main() {
-
     let first_row: Vec<_> = stdin()
         .bytes()
         .filter_map(|l| l.ok())

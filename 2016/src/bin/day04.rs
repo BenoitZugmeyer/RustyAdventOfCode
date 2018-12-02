@@ -1,13 +1,12 @@
 extern crate itertools;
 use itertools::Itertools;
+use std::cmp::Ordering;
 use std::collections::HashMap;
-use std::mem;
 use std::io::stdin;
 use std::io::Read;
-use std::cmp::Ordering;
+use std::mem;
 
 fn main() {
-
     let (sector_sum, room) = stdin()
         .bytes()
         .filter_map(|b| b.ok())
@@ -47,16 +46,16 @@ fn main() {
                 }
             }
 
-            let expected_hash: Vec<_> = map.iter()
-                    .sorted_by(|&(ch_a, count_a), &(ch_b, count_b)| {
-                        match Ord::cmp(count_a, count_b).reverse() {
-                            Ordering::Equal => Ord::cmp(ch_a, ch_b),
-                            ord => ord,
-                        }
-                    })[..5]
-                .iter()
-                .map(|&(ch, _)| **ch)
-                .collect();
+            let expected_hash: Vec<_> =
+                map.iter().sorted_by(|&(ch_a, count_a), &(ch_b, count_b)| {
+                    match Ord::cmp(count_a, count_b).reverse() {
+                        Ordering::Equal => Ord::cmp(ch_a, ch_b),
+                        ord => ord,
+                    }
+                })[..5]
+                    .iter()
+                    .map(|&(ch, _)| **ch)
+                    .collect();
 
             &expected_hash == hash
         })
@@ -66,14 +65,17 @@ fn main() {
                 let base = 'a' as u32;
                 for ch in &name[..name.len() - 1] {
                     if ch != &'-' {
-                        decrypted_name.push(
-                            (((*ch as u32 - base) + sector) % 26 + base) as u8 as char
-                        );
+                        decrypted_name
+                            .push((((*ch as u32 - base) + sector) % 26 + base) as u8 as char);
                     } else {
                         decrypted_name.push(' ');
                     }
                 }
-                if decrypted_name == "northpole object storage" { Some(sector) } else { None }
+                if decrypted_name == "northpole object storage" {
+                    Some(sector)
+                } else {
+                    None
+                }
             });
             (sector_sum + sector, new_room)
         });

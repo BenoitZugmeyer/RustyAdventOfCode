@@ -1,11 +1,11 @@
-extern crate itertools;
 extern crate crypto;
+extern crate itertools;
+use crypto::digest::Digest;
+use crypto::md5::Md5;
 use itertools::Itertools;
 use itertools::MinMaxResult;
 use std::io::stdin;
 use std::io::Read;
-use crypto::md5::Md5;
-use crypto::digest::Digest;
 
 type Coords = (u8, u8);
 
@@ -71,7 +71,6 @@ fn find_path(passcode: &[u8], (x, y): Coords, mut path: &mut Vec<u8>) -> MinMaxR
 }
 
 fn main() {
-
     let passcode: Vec<_> = stdin()
         .bytes()
         .filter_map(|b| b.ok())

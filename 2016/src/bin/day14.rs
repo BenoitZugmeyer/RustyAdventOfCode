@@ -1,11 +1,11 @@
 extern crate crypto;
 extern crate itertools;
+use crypto::digest::Digest;
+use crypto::md5::Md5;
+use std::char;
 use std::io::stdin;
 use std::io::Read;
 use std::iter;
-use std::char;
-use crypto::md5::Md5;
-use crypto::digest::Digest;
 
 fn has_n_of_a_kind(s: &str, n: usize) -> Option<char> {
     let mut current_ch = None;
@@ -28,7 +28,8 @@ fn has_n_of_a_kind(s: &str, n: usize) -> Option<char> {
 
 #[allow(clippy::while_let_on_iterator)]
 fn find_keys_index<B>(hashes: B) -> u32
-    where B: Iterator<Item = String>
+where
+    B: Iterator<Item = String>,
 {
     let mut index = 0;
     let mut count = 0;
@@ -69,16 +70,19 @@ fn stretched_hash(salt: &[u8], index: u32) -> String {
 }
 
 fn main() {
-
     let salt: Vec<_> = stdin()
         .bytes()
         .filter_map(|b| b.ok())
         .filter(|b| b != &b'\n')
         .collect();
 
-    println!("Part 1: {}",
-             find_keys_index((0..).map(|index| hash(&salt, index))));
+    println!(
+        "Part 1: {}",
+        find_keys_index((0..).map(|index| hash(&salt, index)))
+    );
 
-    println!("Part 2: {}",
-             find_keys_index((0..).map(|index| stretched_hash(&salt, index))));
+    println!(
+        "Part 2: {}",
+        find_keys_index((0..).map(|index| stretched_hash(&salt, index)))
+    );
 }

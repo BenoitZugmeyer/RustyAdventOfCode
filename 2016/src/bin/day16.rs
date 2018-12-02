@@ -40,7 +40,6 @@ fn print(vec: &[bool]) {
 }
 
 fn main() {
-
     let start: Vec<_> = stdin()
         .bytes()
         .filter_map(|b| b.ok())

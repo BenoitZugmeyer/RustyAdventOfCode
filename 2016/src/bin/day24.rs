@@ -1,10 +1,10 @@
 extern crate itertools;
 extern crate permutohedron;
 
+use permutohedron::LexicalPermutation;
+use std::collections::BTreeMap;
 use std::io::stdin;
 use std::io::Read;
-use std::collections::BTreeMap;
-use permutohedron::LexicalPermutation;
 
 use itertools::Itertools;
 
@@ -20,15 +20,17 @@ impl Coords {
 }
 
 fn next(map: &[Vec<Cell>], coords: &Coords) -> Vec<Coords> {
-    [(coords.x + 1, coords.y),
-     (coords.x - 1, coords.y),
-     (coords.x, coords.y + 1),
-     (coords.x, coords.y - 1)]
-        .iter()
-        .map(|&(x, y)| Coords::new(x, y))
-        .filter(|c| c.x > 0 && c.y > 0 && c.y < map.len() && c.x < map[c.y].len())
-        .filter(|coord| map[coord.y][coord.x] == Cell::Path)
-        .collect()
+    [
+        (coords.x + 1, coords.y),
+        (coords.x - 1, coords.y),
+        (coords.x, coords.y + 1),
+        (coords.x, coords.y - 1),
+    ]
+    .iter()
+    .map(|&(x, y)| Coords::new(x, y))
+    .filter(|c| c.x > 0 && c.y > 0 && c.y < map.len() && c.x < map[c.y].len())
+    .filter(|coord| map[coord.y][coord.x] == Cell::Path)
+    .collect()
 }
 
 fn find_path_to(map: &[Vec<Cell>], position: &Coords, goal: &Coords) -> Option<u32> {
@@ -36,7 +38,11 @@ fn find_path_to(map: &[Vec<Cell>], position: &Coords, goal: &Coords) -> Option<u
     dmap.insert(*position, 0);
 
     for i in 0.. {
-        let aa: Vec<_> = dmap.iter().filter(|&(_, v)| v == &i).map(|(v, _)| *v).collect();
+        let aa: Vec<_> = dmap
+            .iter()
+            .filter(|&(_, v)| v == &i)
+            .map(|(v, _)| *v)
+            .collect();
         let mut should_go_next = false;
         for p in &aa {
             for next in &next(map, p) {
@@ -72,8 +78,10 @@ fn main() {
             b'.' => map.last_mut().unwrap().push(Cell::Path),
             b'0'...b'9' => {
                 map.last_mut().unwrap().push(Cell::Path);
-                poi.insert(b - b'0',
-                           Coords::new(map.last().unwrap().len() - 1, map.len() - 1));
+                poi.insert(
+                    b - b'0',
+                    Coords::new(map.last().unwrap().len() - 1, map.len() - 1),
+                );
             }
             b'\n' => map.push(vec![]),
             _ => {}
@@ -84,7 +92,8 @@ fn main() {
         let mut poi_keys: Vec<_> = poi.keys().skip(1).collect();
         let mut min = 10000;
         loop {
-            let mut s: u32 = poi_keys.iter()
+            let mut s: u32 = poi_keys
+                .iter()
                 .tuple_windows()
                 .map(|(a, b)| find_path_to(&map, &poi[a], &poi[b]).unwrap())
                 .sum();
@@ -100,7 +109,8 @@ fn main() {
         let mut poi_keys: Vec<_> = poi.keys().skip(1).collect();
         let mut min = 10000;
         loop {
-            let mut s: u32 = poi_keys.iter()
+            let mut s: u32 = poi_keys
+                .iter()
                 .tuple_windows()
                 .map(|(a, b)| find_path_to(&map, &poi[a], &poi[b]).unwrap())
                 .sum();

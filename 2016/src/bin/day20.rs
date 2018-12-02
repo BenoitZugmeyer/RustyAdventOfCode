@@ -1,11 +1,11 @@
+use std::collections::BTreeSet;
 use std::io::stdin;
 use std::io::BufRead;
-use std::collections::BTreeSet;
-
 
 fn main() {
     let stdin = stdin();
-    let blacklist: BTreeSet<(u32, u32)> = stdin.lock()
+    let blacklist: BTreeSet<(u32, u32)> = stdin
+        .lock()
         .lines()
         .filter_map(|l| l.ok())
         .filter_map(|line| {

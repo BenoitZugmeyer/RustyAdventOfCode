@@ -3,7 +3,6 @@ use std::io::stdin;
 use std::io::Read;
 
 fn main() {
-
     let columns = stdin()
         .bytes()
         .filter_map(|b| b.ok())
@@ -22,11 +21,13 @@ fn main() {
         })
         .1;
 
-    let message1: String = columns.iter()
+    let message1: String = columns
+        .iter()
         .map(|column| *column.iter().max_by_key(|&(_, count)| count).unwrap().0)
         .collect();
 
-    let message2: String = columns.iter()
+    let message2: String = columns
+        .iter()
         .map(|column| *column.iter().min_by_key(|&(_, count)| count).unwrap().0)
         .collect();
 
