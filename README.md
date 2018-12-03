@@ -20,18 +20,18 @@ Add your own by submitting a pull request.
 | [dgel/adventOfCode2018](https://github.com/dgel/adventOfCode2018) | - | 2018 |
 | [dsilvers/aoc](https://git.gitano.org.uk/personal/dsilvers/aoc.git/tree) | [@dsilverstone](https://twitter.com/dsilverstone) | 2018 |
 | [gobanos/advent-of-code-2018](https://github.com/gobanos/advent-of-code-2018) | - | 2018 |
+| [gperinazzo/advent-of-code-2018](https://github.com/gperinazzo/advent-of-code-2018) | - | 2018 |
 | [hedvigoscar/adventofcode2018](https://github.com/hedvigoscar/adventofcode2018) | - | 2018 |
+| [humean/advent-of-code](https://github.com/humean/advent-of-code) | [@m_rutter](https://twitter.com/m_rutter) | 2017, 2018 |
+| [jfro/AoC2018](https://github.com/jfro/AoC2018) | [@jeromejtk](https://twitter.com/jeromejtk) | 2018 |
 | [JMS55/advent-of-code-2018](https://gitlab.com/JMS55/advent-of-code-2018) | - | 2018 |
 | [jsdw/advent-of-code-2018](https://github.com/jsdw/advent-of-code-2018) | - | 2018 |
 | [KonradBorowski/advent-of-code-2018](https://gitlab.com/KonradBorowski/advent-of-code-2018) | - | 2018 |
-| [humean/advent-of-code](https://github.com/humean/advent-of-code) | [@m_rutter](https://twitter.com/m_rutter) | 2017, 2018 |
 | [LLBlumire/AoC2018](https://github.com/LLBlumire/AOC2018) | [@llblumire](https://twitter.com/llblumire) | 2018 |
-| [shssoichiro/aoc2018](https://git.onewebdev.info/soichiro/aoc2018) | - | 2018 |
-| [udoprog/rust-advent-of-code-2018](https://github.com/udoprog/rust-advent-of-code-2018) | - | 2018 |
-| [gperinazzo/advent-of-code-2018](https://github.com/gperinazzo/advent-of-code-2018) | - | 2018 |
-| [theonewolf/aoc2018](https://github.com/theonewolf/aoc2018) | [@theonewolf](https://twitter.com/theonewolf) | 2018 |
-| [jfro/AoC2018](https://github.com/jfro/AoC2018) | [@jeromejtk](https://twitter.com/jeromejtk) | 2018 |
 | [pivovarit/advent_of_code_2018_rs](https://github.com/pivovarit/advent_of_code_2018_rs) | [@pivovarit](https://twitter.com/pivovarit) | 2018 |
+| [shssoichiro/aoc2018](https://git.onewebdev.info/soichiro/aoc2018) | - | 2018 |
+| [theonewolf/aoc2018](https://github.com/theonewolf/aoc2018) | [@theonewolf](https://twitter.com/theonewolf) | 2018 |
+| [udoprog/rust-advent-of-code-2018](https://github.com/udoprog/rust-advent-of-code-2018) | - | 2018 |
 
 #### Finished
 
@@ -42,10 +42,10 @@ Add your own by submitting a pull request.
 | [birkenfeld/advent17](https://github.com/birkenfeld/advent17) | - | 2017 |
 | [dgel/adventOfCode2017](https://github.com/dgel/adventOfCode2017) | - | 2017 |
 | [dsilvers/aoc](https://git.gitano.org.uk/personal/dsilvers/aoc.git/tree) | [@dsilverstone](https://twitter.com/dsilverstone) | 2015, 2016, 2017 |
+| [jsdw/advent-of-code-2017](https://github.com/jsdw/advent-of-code-2017) | - | 2017 |
 | [jugglerchris/aoc2017](https://github.com/jugglerchris/aoc2017) | [@jugglerchris](https://twitter.com/jugglerchris) | 2017 |
 | [JWorthe/advent_of_code_2017](https://github.com/JWorthe/advent_of_code_2017) | [@JWorthe](https://twitter.com/JWorthe) | 2017 |
 | [JWorthe/adventofcode2016](https://github.com/JWorthe/adventofcode2016) | [@JWorthe](https://twitter.com/JWorthe) | 2016 |
-| [jsdw/advent-of-code-2017](https://github.com/jsdw/advent-of-code-2017) | - | 2017 |
 | [McGittyHub/aoc-2k17](https://github.com/McGittyHub/aoc-2k17) | [@snarf95](https://twitter.com/snarf95) | 2017 |
 | [sciyoshi/advent-of-rust-2017](https://github.com/sciyoshi/advent-of-rust-2017) | [@sciyoshi](https://twitter.com/sciyoshi) | 2017 |
 | [thejpster/rust-advent-of-code](https://github.com/thejpster/rust-advent-of-code) | [@therealjpster](https://twitter.com/therealjpster) | 2016, 2017 |
