@@ -17,6 +17,7 @@ Add your own by submitting a pull request.
 | [birkenfeld/advent18](https://github.com/birkenfeld/advent18) | - | 2018 |
 | [BurntSushi/advent-of-code](https://github.com/BurntSushi/advent-of-code) | - | 2018 |
 | [butzsch/Advent-of-Code-2018](https://github.com/butzsch/Advent-of-Code-2018) | - | 2018 |
+| [daxhuiberts/advent-of-code-2018](https://github.com/daxhuiberts/advent-of-code-2018) | - | 2018 |
 | [dgel/adventOfCode2018](https://github.com/dgel/adventOfCode2018) | - | 2018 |
 | [dsilvers/aoc](https://git.gitano.org.uk/personal/dsilvers/aoc.git/tree) | [@dsilverstone](https://twitter.com/dsilverstone) | 2018 |
 | [gobanos/advent-of-code-2018](https://github.com/gobanos/advent-of-code-2018) | - | 2018 |
