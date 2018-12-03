@@ -31,6 +31,7 @@ Add your own by submitting a pull request.
 | [gperinazzo/advent-of-code-2018](https://github.com/gperinazzo/advent-of-code-2018) | - | 2018 |
 | [theonewolf/aoc2018](https://github.com/theonewolf/aoc2018) | [@theonewolf](https://twitter.com/theonewolf) | 2018 |
 | [jfro/AoC2018](https://github.com/jfro/AoC2018) | [@jeromejtk](https://twitter.com/jeromejtk) | 2018 |
+| [pivovarit/advent_of_code_2018_rs](https://github.com/pivovarit/advent_of_code_2018_rs) | [@pivovarit](https://twitter.com/pivovarit) | 2018 |
 
 #### Finished
 
