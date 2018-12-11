@@ -4,7 +4,7 @@ set -euo pipefail
 
 ROOT_DIR=$(dirname $0)
 
-files=$(find $ROOT_DIR/src/bin -printf "%f\n" -name "*.rs" | sort -n)
+files=$(find $ROOT_DIR/src/bin -name "*.rs" -printf "%f\n" | sort -n)
 echo $files
 
 for src_file in $files; do
