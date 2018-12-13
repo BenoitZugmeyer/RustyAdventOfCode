@@ -22,7 +22,7 @@ Add your own by submitting a pull request.
 | [gobanos/advent-of-code-2018](https://github.com/gobanos/advent-of-code-2018) | - | 2018 |
 | [gperinazzo/advent-of-code-2018](https://github.com/gperinazzo/advent-of-code-2018) | - | 2018 |
 | [hedvigoscar/adventofcode2018](https://github.com/hedvigoscar/adventofcode2018) | - | 2018 |
-| [humean/advent-of-code](https://github.com/humean/advent-of-code) | [@m_rutter](https://twitter.com/m_rutter) | 2017, 2018 |
+| [m-rutter/advent-of-code](https://github.com/m-rutter/advent-of-code) | [@m_rutter](https://twitter.com/m_rutter) | 2017, 2018 
 | [jfro/AoC2018](https://github.com/jfro/AoC2018) | [@jeromejtk](https://twitter.com/jeromejtk) | 2018 |
 | [JMS55/advent-of-code-2018](https://gitlab.com/JMS55/advent-of-code-2018) | - | 2018 |
 | [jsdw/advent-of-code-2018](https://github.com/jsdw/advent-of-code-2018) | - | 2018 |
