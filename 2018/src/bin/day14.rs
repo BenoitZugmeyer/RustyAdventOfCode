@@ -45,7 +45,7 @@ fn part_1(number_of_recipes: usize) -> u64 {
     }
     board.scores[number_of_recipes..number_of_recipes + 10]
         .iter()
-        .fold(0, |digits, &score| digits * 10 + score as u64)
+        .fold(0, |digits, &score| digits * 10 + u64::from(score))
 }
 
 fn part_2(digits: &[u8]) -> u64 {
@@ -86,10 +86,10 @@ mod tests {
 
     #[test]
     fn test_part_1() {
-        assert_eq!(part_1(9), 5158916779);
-        assert_eq!(part_1(5), 0124515891);
-        assert_eq!(part_1(18), 9251071085);
-        assert_eq!(part_1(2018), 5941429882);
+        assert_eq!(part_1(9), 5_158_916_779);
+        assert_eq!(part_1(5), 124_515_891);
+        assert_eq!(part_1(18), 9_251_071_085);
+        assert_eq!(part_1(2018), 5_941_429_882);
     }
 
     #[test]

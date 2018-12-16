@@ -22,13 +22,13 @@ fn main() {
         .filter_map(|line| {
             let mut chars = line.chars();
             let bools = parse_pots(&mut chars);
-            if bools.len() != 5 {
-                None
-            } else {
+            if bools.len() == 5 {
                 Some((
                     (bools[0], bools[1], bools[2], bools[3], bools[4]),
                     chars.nth(3)? == '#',
                 ))
+            } else {
+                None
             }
         })
         .collect();

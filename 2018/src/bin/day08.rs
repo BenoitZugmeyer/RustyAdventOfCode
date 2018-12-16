@@ -25,8 +25,7 @@ fn node_value(root: &Node) -> usize {
     } else {
         root.metadata
             .iter()
-            .filter_map(|m| root.children.get(m.wrapping_sub(1)))
-            .map(node_value)
+            .filter_map(|m| root.children.get(m.wrapping_sub(1)).map(node_value))
             .sum::<usize>()
     }
 }

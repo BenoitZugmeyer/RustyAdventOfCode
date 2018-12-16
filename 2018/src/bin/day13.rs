@@ -19,7 +19,7 @@ enum Direction {
 }
 
 impl Direction {
-    fn left(&self) -> Direction {
+    fn left(&self) -> Self {
         match self {
             Direction::North => Direction::West,
             Direction::West => Direction::South,
@@ -27,7 +27,7 @@ impl Direction {
             Direction::East => Direction::North,
         }
     }
-    fn right(&self) -> Direction {
+    fn right(&self) -> Self {
         match self {
             Direction::North => Direction::East,
             Direction::East => Direction::South,
@@ -44,21 +44,21 @@ struct Coordinates {
 }
 
 impl Coordinates {
-    fn next(&self, direction: &Direction) -> Coordinates {
+    fn next(&self, direction: &Direction) -> Self {
         match direction {
-            Direction::North => Coordinates {
+            Direction::North => Self {
                 x: self.x,
                 y: self.y - 1,
             },
-            Direction::East => Coordinates {
+            Direction::East => Self {
                 x: self.x + 1,
                 y: self.y,
             },
-            Direction::West => Coordinates {
+            Direction::West => Self {
                 x: self.x - 1,
                 y: self.y,
             },
-            Direction::South => Coordinates {
+            Direction::South => Self {
                 x: self.x,
                 y: self.y + 1,
             },
