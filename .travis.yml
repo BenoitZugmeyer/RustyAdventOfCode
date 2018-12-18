@@ -1,0 +1,16 @@
+language: rust
+
+cache: cargo
+
+rust:
+  - nightly
+
+before_script:
+  - rustup component add clippy
+
+script:
+  - cd 2018
+  - cargo clippy --all-targets -- -D warnings -D clippy::pedantic
+  - cargo build --release --all
+  - cargo test --release
+  - bash run.bash
