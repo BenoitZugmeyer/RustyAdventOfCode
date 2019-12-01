@@ -1,0 +1,8 @@
+[package]
+name = "aoc-2019"
+version = "0.1.0"
+authors = ["Benoît Zugmeyer <bzugmeyer@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+native-tls = "0.2.3"
