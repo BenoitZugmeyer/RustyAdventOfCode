@@ -45,16 +45,20 @@ mod tests {
     #[test]
     fn part_1() {
         assert_eq!(
-            total_fuel_required(util::input(1).flat_map(|line| line.parse())),
-            util::answer(1, 1).unwrap_or(0)
+            Some(u64::from(total_fuel_required(
+                util::input(1).flat_map(|line| line.parse())
+            ))),
+            util::answer(1, 1)
         );
     }
 
     #[test]
     fn part_2() {
         assert_eq!(
-            total_fuel_required_with_requirement(util::input(1).flat_map(|line| line.parse())),
-            util::answer(1, 2).unwrap_or(0)
+            Some(u64::from(total_fuel_required_with_requirement(
+                util::input(1).flat_map(|line| line.parse())
+            ))),
+            util::answer(1, 2),
         );
     }
 }

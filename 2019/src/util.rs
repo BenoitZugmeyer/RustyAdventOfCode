@@ -85,7 +85,7 @@ fn from_cache<T: FnOnce() -> Option<Vec<String>>>(
 }
 
 #[cfg(test)]
-pub fn answer(day: u8, puzzle: usize) -> Option<u32> {
+pub fn answer(day: u8, puzzle: usize) -> Option<u64> {
     from_cache(&format!("answer_{:02}_{}", day, puzzle), || {
         fetch_aoc(&format!("/2019/day/{}", day))
             .filter_map(|line| {
