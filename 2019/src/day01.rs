@@ -45,9 +45,9 @@ mod tests {
     #[test]
     fn part_1() {
         assert_eq!(
-            Some(u64::from(total_fuel_required(
+            Some(total_fuel_required(
                 util::input(1).flat_map(|line| line.parse())
-            ))),
+            )),
             util::answer(1, 1)
         );
     }
@@ -55,9 +55,9 @@ mod tests {
     #[test]
     fn part_2() {
         assert_eq!(
-            Some(u64::from(total_fuel_required_with_requirement(
+            Some(total_fuel_required_with_requirement(
                 util::input(1).flat_map(|line| line.parse())
-            ))),
+            )),
             util::answer(1, 2),
         );
     }

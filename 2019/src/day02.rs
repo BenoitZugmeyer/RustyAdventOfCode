@@ -92,16 +92,13 @@ mod tests {
     #[test]
     fn part_1() {
         assert_eq!(
-            Some(u64::from(run_program_with_input(get_program(), 12, 2))),
+            Some(run_program_with_input(get_program(), 12, 2)),
             util::answer(2, 1)
         );
     }
 
     #[test]
     fn part_2() {
-        assert_eq!(
-            Some(u64::from(find_verb_noun(&get_program()))),
-            util::answer(2, 2)
-        );
+        assert_eq!(Some(find_verb_noun(&get_program())), util::answer(2, 2));
     }
 }
