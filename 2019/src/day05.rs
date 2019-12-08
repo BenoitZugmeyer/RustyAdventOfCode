@@ -1,8 +1,7 @@
-
 #[cfg(test)]
 mod tests {
-    use crate::util;
     use crate::intcode::Program;
+    use crate::util;
 
     fn get_program() -> Program {
         util::input(5).next().expect("No input").parse().unwrap()

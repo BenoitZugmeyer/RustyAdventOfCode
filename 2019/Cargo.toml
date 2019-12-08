@@ -7,3 +7,4 @@ edition = "2018"
 [dependencies]
 native-tls = "0.2.3"
 itertools = "0.8.2"
+bytecount = "0.6.0"

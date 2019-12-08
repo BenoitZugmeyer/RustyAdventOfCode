@@ -1,4 +1,3 @@
-
 use std::convert::TryFrom;
 
 pub type Value = i32;
@@ -129,5 +128,4 @@ mod tests {
         program.run(&[]);
         assert_eq!(program.memory, vec![1002, 4, 3, 4, 99]);
     }
-
 }
