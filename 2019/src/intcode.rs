@@ -1,6 +1,6 @@
 use std::convert::TryFrom;
 
-pub type Value = i32;
+pub type Value = i64;
 
 #[derive(Debug)]
 pub enum ProgramResult {
@@ -21,12 +21,17 @@ impl ProgramResult {
 #[derive(Debug, Clone)]
 pub struct Program {
     ip: usize,
+    relative_base: Value,
     memory: Vec<Value>,
 }
 
 impl Program {
     pub fn new(memory: Vec<Value>) -> Self {
-        Self { memory, ip: 0 }
+        Self {
+            memory,
+            ip: 0,
+            relative_base: 0,
+        }
     }
 
     #[allow(dead_code)]
@@ -34,7 +39,7 @@ impl Program {
         let mut input = input.iter();
         let mut output = Vec::new();
         loop {
-            match self.memory[self.ip] % 100 {
+            match self.read_address(self.ip) % 100 {
                 1 => {
                     let result = self.read(0) + self.read(1);
                     self.write(2, result);
@@ -81,6 +86,10 @@ impl Program {
                     self.write(2, result);
                     self.ip += 4;
                 }
+                9 => {
+                    self.relative_base += self.read(0);
+                    self.ip += 2;
+                }
                 99 => {
                     return ProgramResult::Halt(output);
                 }
@@ -90,17 +99,29 @@ impl Program {
     }
 
     fn write(&mut self, param: usize, value: Value) {
-        let address = usize::try_from(self.memory[self.ip + param + 1]).unwrap();
+        let address = self.get_address(param);
+        if address >= self.memory.len() {
+            self.memory.resize(address + 1, 0);
+        }
         self.memory[address] = value;
     }
 
     fn read(&self, param: usize) -> Value {
-        let instruction = self.memory[self.ip];
-        let mode = (instruction / (10_i32.pow(2 + u32::try_from(param).unwrap()))) % 10;
-        let v = self.memory[self.ip + 1 + param];
+        self.read_address(self.get_address(param))
+    }
+
+    fn read_address(&self, address: usize) -> Value {
+        self.memory.get(address).cloned().unwrap_or(0)
+    }
+
+    fn get_address(&self, param: usize) -> usize {
+        let instruction = self.read_address(self.ip);
+        let mode = (instruction / (10_i64.pow(2 + u32::try_from(param).unwrap()))) % 10;
+        let param_address = self.ip + 1 + param;
         match mode {
-            0 => self.memory[usize::try_from(v).unwrap()],
-            1 => v,
+            0 => usize::try_from(self.read_address(param_address)).unwrap(),
+            1 => param_address,
+            2 => usize::try_from(self.relative_base + self.read_address(param_address)).unwrap(),
             _ => panic!("Invalid mode {}", mode),
         }
     }

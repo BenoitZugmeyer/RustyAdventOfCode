@@ -1,8 +1,8 @@
-use crate::intcode::{Program, ProgramResult};
+use crate::intcode::{Program, ProgramResult, Value};
 use itertools::Itertools;
 
 #[allow(dead_code)]
-fn run_amplifiers(program: &Program) -> i32 {
+fn run_amplifiers(program: &Program) -> Value {
     (0..5)
         .permutations(5)
         .map(|phase_settings| {
@@ -18,7 +18,7 @@ fn run_amplifiers(program: &Program) -> i32 {
 }
 
 #[allow(dead_code)]
-fn run_amplifiers_with_feedback_loop(program: &Program) -> i32 {
+fn run_amplifiers_with_feedback_loop(program: &Program) -> Value {
     (5..10)
         .permutations(5)
         .map(|phase_settings| {
