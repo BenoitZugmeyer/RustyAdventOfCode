@@ -1,20 +1,5 @@
+use crate::point::Point;
 use itertools::iproduct;
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-struct Point {
-    x: i32,
-    y: i32,
-}
-
-impl Point {
-    fn new(x: i32, y: i32) -> Self {
-        Self { x, y }
-    }
-
-    fn distance(self, other: Self) -> i32 {
-        (self.x - other.x).abs() + (self.y - other.y).abs()
-    }
-}
 
 type Line = (Point, Point);
 

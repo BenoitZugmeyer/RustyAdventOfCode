@@ -1,24 +1,5 @@
+use crate::point::Point;
 use std::collections::HashSet;
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-struct Point {
-    x: i32,
-    y: i32,
-}
-
-impl Point {
-    fn new(x: i32, y: i32) -> Self {
-        Self { x, y }
-    }
-
-    fn relative_to(self, origin: Self) -> Self {
-        Self::new(self.x - origin.x, self.y - origin.y)
-    }
-
-    fn distance(self, other: Self) -> i32 {
-        (self.x - other.x).abs() + (self.y - other.y).abs()
-    }
-}
 
 fn compute_closest_point(p: Point) -> Point {
     let mut a = p.x.abs().max(p.y.abs());

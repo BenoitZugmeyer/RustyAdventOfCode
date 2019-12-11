@@ -38,8 +38,8 @@ fn format_image(image: &[u8]) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::ocr::ocr;
     use crate::util;
-    use std::collections::HashMap;
 
     fn get_image() -> Vec<u8> {
         util::input(8)
@@ -58,37 +58,6 @@ mod tests {
             Some(bytecount::count(layer, 1) * bytecount::count(layer, 2)),
             util::answer(8, 1)
         );
-    }
-
-    const CHAR_WIDTH: usize = 4;
-    fn ocr(image: &str) -> String {
-        let chars: HashMap<_, _> = [
-            ("### #  #### #  ##  #### ", 'B'),
-            ("#####   ### #   #   #   ", 'F'),
-            ("#   #   #   #   #   ####", 'L'),
-            ("#   #    # #  #   #   # ", 'Y'),
-            ("####   #  #  #  #   ####", 'Z'),
-        ]
-        .iter()
-        .cloned()
-        .collect();
-
-        (0..(WIDTH / (CHAR_WIDTH + 1)))
-            .map(|i| {
-                let image_char: String = (0..HEIGHT)
-                    .map(|y| {
-                        let n = i * (CHAR_WIDTH + 1) + y * (WIDTH + 1);
-                        &image[n..n + CHAR_WIDTH]
-                    })
-                    .collect();
-
-                if let Some(ch) = chars.get(image_char.as_str()) {
-                    ch
-                } else {
-                    panic!("Character not found: {:?}", image_char);
-                }
-            })
-            .collect()
     }
 
     #[test]
