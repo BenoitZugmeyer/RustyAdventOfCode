@@ -110,3 +110,20 @@ pub fn input(day: u8) -> impl Iterator<Item = String> {
     })
     .unwrap()
 }
+
+pub fn gcd(a: i64, b: i64) -> i64 {
+    let (mut a, mut b) = (a.abs().max(b.abs()), a.abs().min(b.abs()));
+    loop {
+        if b == 0 {
+            return a;
+        }
+        let r = a % b;
+        a = b;
+        b = r;
+    }
+}
+
+pub fn lcm(a: i64, b: i64) -> i64 {
+    let gcd = gcd(a, b);
+    a * b / gcd
+}
