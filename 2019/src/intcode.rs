@@ -39,7 +39,7 @@ impl Program {
         let mut input = input.iter();
         let mut output = Vec::new();
         loop {
-            match self.read_address(self.ip) % 100 {
+            match self.read_memory(self.ip) % 100 {
                 1 => {
                     let result = self.read(0) + self.read(1);
                     self.write(2, result);
@@ -99,29 +99,32 @@ impl Program {
     }
 
     fn write(&mut self, param: usize, value: Value) {
-        let address = self.get_address(param);
+        self.write_memory(self.get_address(param), value);
+    }
+
+    fn read(&self, param: usize) -> Value {
+        self.read_memory(self.get_address(param))
+    }
+
+    pub fn write_memory(&mut self, address: usize, value: Value) {
         if address >= self.memory.len() {
             self.memory.resize(address + 1, 0);
         }
         self.memory[address] = value;
     }
 
-    fn read(&self, param: usize) -> Value {
-        self.read_address(self.get_address(param))
-    }
-
-    fn read_address(&self, address: usize) -> Value {
+    fn read_memory(&self, address: usize) -> Value {
         self.memory.get(address).cloned().unwrap_or(0)
     }
 
     fn get_address(&self, param: usize) -> usize {
-        let instruction = self.read_address(self.ip);
+        let instruction = self.read_memory(self.ip);
         let mode = (instruction / (10_i64.pow(2 + u32::try_from(param).unwrap()))) % 10;
         let param_address = self.ip + 1 + param;
         match mode {
-            0 => usize::try_from(self.read_address(param_address)).unwrap(),
+            0 => usize::try_from(self.read_memory(param_address)).unwrap(),
             1 => param_address,
-            2 => usize::try_from(self.relative_base + self.read_address(param_address)).unwrap(),
+            2 => usize::try_from(self.relative_base + self.read_memory(param_address)).unwrap(),
             _ => panic!("Invalid mode {}", mode),
         }
     }

@@ -60,7 +60,13 @@ fn step(moons: &[Moon]) -> Vec<Moon> {
         for d in 0..3 {
             let a = moon_a.position.dimensions[d];
             let b = moon_b.position.dimensions[d];
-            let diff = if a > b { 1 } else if a < b { -1 } else { 0 };
+            let diff = if a > b {
+                1
+            } else if a < b {
+                -1
+            } else {
+                0
+            };
             new_moons[index_a].velocity.dimensions[d] -= diff;
             new_moons[index_b].velocity.dimensions[d] += diff;
         }
