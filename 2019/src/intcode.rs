@@ -16,6 +16,13 @@ impl ProgramResult {
             Self::NeedInput(_) => panic!("The program is waiting for input"),
         }
     }
+
+    #[allow(dead_code)]
+    pub fn get_output(self) -> Vec<Value> {
+        match self {
+            Self::Halt(result) | Self::NeedInput(result) => result,
+        }
+    }
 }
 
 #[derive(Debug, Clone)]

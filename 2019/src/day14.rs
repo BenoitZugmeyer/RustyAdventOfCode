@@ -5,7 +5,11 @@ type ReactionsSlice = [(u64, Vec<(Chemical, u64)>)];
 const FUEL: usize = 0;
 const ORE: usize = 10000;
 
-fn run_reactions(reactions: &ReactionsSlice, overproduced_chemicals: &mut [u64], needed_fuel: u64) -> Option<u64> {
+fn run_reactions(
+    reactions: &ReactionsSlice,
+    overproduced_chemicals: &mut [u64],
+    needed_fuel: u64,
+) -> Option<u64> {
     let mut missing_chemicals = HashMap::new();
     missing_chemicals.insert(FUEL, needed_fuel);
 

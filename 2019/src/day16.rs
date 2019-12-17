@@ -102,8 +102,7 @@ mod tests {
     }
 
     fn get_signal() -> Vec<u8> {
-
-         util::input(16)
+        util::input(16)
             .next()
             .unwrap()
             .bytes()
