@@ -75,9 +75,10 @@ impl Screen {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::util;
-
     use crate::intcode::{Program, ProgramResult};
+    use crate::util;
+    use std::cmp::Ordering;
+
     fn get_program() -> Program {
         util::input(13).next().expect("No input").parse().unwrap()
     }
@@ -109,12 +110,10 @@ mod tests {
         };
 
         loop {
-            let joystick = if screen.paddle_x < screen.ball_x {
-                1
-            } else if screen.paddle_x > screen.ball_x {
-                -1
-            } else {
-                0
+            let joystick = match screen.paddle_x.cmp(&screen.ball_x) {
+                Ordering::Less => 1,
+                Ordering::Greater => -1,
+                _ => 0,
             };
 
             match program.run(&[joystick]) {

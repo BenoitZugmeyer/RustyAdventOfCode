@@ -1,5 +1,6 @@
 use crate::util;
 use itertools::Itertools;
+use std::cmp::Ordering;
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Hash)]
 struct Point3D {
@@ -60,12 +61,10 @@ fn step(moons: &[Moon]) -> Vec<Moon> {
         for d in 0..3 {
             let a = moon_a.position.dimensions[d];
             let b = moon_b.position.dimensions[d];
-            let diff = if a > b {
-                1
-            } else if a < b {
-                -1
-            } else {
-                0
+            let diff = match a.cmp(&b) {
+                Ordering::Greater => 1,
+                Ordering::Less => -1,
+                _ => 0,
             };
             new_moons[index_a].velocity.dimensions[d] -= diff;
             new_moons[index_b].velocity.dimensions[d] += diff;
