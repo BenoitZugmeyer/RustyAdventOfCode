@@ -12,15 +12,22 @@ impl ProgramResult {
     #[allow(dead_code)]
     pub fn unwrap(self) -> Vec<Value> {
         match self {
-            Self::Halt(result) => result,
-            Self::NeedInput(_) => panic!("The program is waiting for input"),
+            Self::Halt(result) | Self::NeedInput(result) => result,
         }
     }
 
-    #[allow(dead_code)]
-    pub fn get_output(self) -> Vec<Value> {
+    pub fn get_output(&self) -> &Vec<Value> {
         match self {
             Self::Halt(result) | Self::NeedInput(result) => result,
+        }
+    }
+
+    #[allow(dead_code, clippy::cast_possible_truncation, clippy::cast_sign_loss)]
+    pub fn print_ascii(&self) {
+        let output = self.get_output();
+
+        for ch in output {
+            print!("{}", *ch as u8 as char);
         }
     }
 }
@@ -42,6 +49,10 @@ impl Program {
     }
 
     #[allow(dead_code)]
+    pub fn run_str(&mut self, s: &str) -> ProgramResult {
+        self.run(&s.bytes().map(i64::from).collect::<Vec<_>>())
+    }
+
     pub fn run(&mut self, input: &[Value]) -> ProgramResult {
         let mut input = input.iter();
         let mut output = Vec::new();

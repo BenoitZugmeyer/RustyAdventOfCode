@@ -266,7 +266,7 @@ mod tests {
 
         let output = program
             .run(&[Value::from(b'n'), Value::from(b'\n')])
-            .get_output();
+            .unwrap();
         assert_eq!(output.last().cloned(), util::answer(17, 2));
     }
 }

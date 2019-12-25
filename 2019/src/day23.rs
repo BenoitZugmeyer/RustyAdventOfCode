@@ -32,7 +32,7 @@ mod tests {
         .get_output()
         .into_iter()
         .tuples()
-        .map(|(address, x, y)| (usize::try_from(address).unwrap(), (x, y)))
+        .map(|(address, x, y)| (usize::try_from(*address).unwrap(), (*x, *y)))
         .collect()
     }
 
