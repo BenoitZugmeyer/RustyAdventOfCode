@@ -111,19 +111,49 @@ pub fn input(day: u8) -> impl Iterator<Item = String> {
     .unwrap()
 }
 
-pub fn gcd(a: i64, b: i64) -> i64 {
-    let (mut a, mut b) = (a.abs().max(b.abs()), a.abs().min(b.abs()));
-    loop {
-        if b == 0 {
-            return a;
-        }
-        let r = a % b;
-        a = b;
-        b = r;
-    }
+#[cfg(test)]
+pub fn example(day: u8, example: usize) -> impl Iterator<Item = String> {
+    from_cache(&format!("example_{:02}_{}", day, example), move || {
+        fetch_aoc(&format!("/2020/day/{}", day))
+            .scan((false, Vec::new()), |state, line| {
+                let is_start = line.starts_with("<pre><code>");
+                let is_end = line.ends_with("</code></pre>");
+
+                if !state.0 && is_start {
+                    state.0 = true;
+                }
+
+                if state.0 {
+                    let start = if is_start { 11 } else { 0 };
+                    let end = if is_end { line.len() - 13 } else { line.len() };
+                    state.1.push(line[start..end].to_string());
+                    if is_end {
+                        state.0 = false;
+                        return Some(Some(std::mem::replace(&mut state.1, Vec::new())));
+                    }
+                }
+
+                return Some(None);
+            })
+            .flatten()
+            .nth(example - 1)
+    })
+    .unwrap()
 }
 
-pub fn lcm(a: i64, b: i64) -> i64 {
-    let gcd = gcd(a, b);
-    a * b / gcd
-}
+// pub fn gcd(a: i64, b: i64) -> i64 {
+//     let (mut a, mut b) = (a.abs().max(b.abs()), a.abs().min(b.abs()));
+//     loop {
+//         if b == 0 {
+//             return a;
+//         }
+//         let r = a % b;
+//         a = b;
+//         b = r;
+//     }
+// }
+
+// pub fn lcm(a: i64, b: i64) -> i64 {
+//     let gcd = gcd(a, b);
+//     a * b / gcd
+// }
