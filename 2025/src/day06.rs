@@ -16,7 +16,7 @@ fn part_1(lines: impl Iterator<Item = String>) -> u64 {
                 match ch {
                     '*' | '+' => operands.push(ch),
                     _ => {}
-                };
+                }
             }
         }
     }
@@ -39,15 +39,15 @@ fn part_2(lines: impl Iterator<Item = String>) -> u64 {
                 .filter(|(_, op)| *op != ' ')
                 .map(|(i, op)| compute(op, numbers.iter().skip(i).map_while(|n| *n)))
                 .sum();
-        } else {
-            for (i, ch) in line.chars().enumerate() {
-                if let Some(d) = ch.to_digit(10) {
-                    let d = d as u64;
-                    if numbers.len() <= i {
-                        numbers.resize(i + 1, None);
-                    }
-                    numbers[i] = Some(numbers[i].map(|n| n * 10 + d).unwrap_or(d));
+        }
+
+        for (i, ch) in line.chars().enumerate() {
+            if let Some(d) = ch.to_digit(10) {
+                let d = d as u64;
+                if numbers.len() <= i {
+                    numbers.resize(i + 1, None);
                 }
+                numbers[i] = Some(numbers[i].map_or(d, |n| n * 10 + d));
             }
         }
     }

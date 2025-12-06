@@ -22,7 +22,7 @@ fn find_biggest_joltage(bank: &[u8], digits: usize) -> u64 {
     let mut index = 0;
     for d in 1..=digits {
         let (i, b) = find_biggest_bank(&bank[index..bank.len() - (digits - d)]);
-        sum += (b as u64) * 10u64.pow((digits - d) as u32);
+        sum += u64::from(b) * 10u64.pow((digits - d) as u32);
         index += i + 1;
     }
 

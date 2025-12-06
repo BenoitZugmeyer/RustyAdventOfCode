@@ -6,10 +6,10 @@ fn part_1<T: Iterator<Item = i32>>(moves: T) -> i32 {
         position += m;
         position = position.rem_euclid(100);
         if position == 0 {
-            count += 1
+            count += 1;
         }
     }
-    return count;
+    count
 }
 
 #[allow(dead_code)]
@@ -27,7 +27,7 @@ fn part_2<T: Iterator<Item = i32>>(moves: T) -> i32 {
         position += m;
         position = position.rem_euclid(100);
     }
-    return count;
+    count
 }
 
 #[allow(dead_code)]
